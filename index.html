@@ -250,6 +250,144 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/08/27/git命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="swii">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小萝卜头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/27/git命令/" itemprop="url">
+                  git命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T19:37:00+08:00">
+                2017-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p><img src="/img/git1.png" alt=""><br>Git branch 查看当前分支<br>Git branch -a 查看远程分支和当前分支<br>Git branch test 建立新分支</p>
+<p><img src="/img/git2.png" alt=""><br>Git branch -d branchName 删除本地某分支<br>Git branch -r -d origin/branchName 删除远程分支<br>Git push origin: branchName 删除远程分支</p>
+<h2 id="查看分支之间的关系和commit日志"><a href="#查看分支之间的关系和commit日志" class="headerlink" title="查看分支之间的关系和commit日志"></a>查看分支之间的关系和commit日志</h2><p><img src="/img/git3.png" alt=""></p>
+<p>git log –graph –decorate –oneline –simplify-by-decoration –all</p>
+<p>说明：<br>–decorate 标记会让git log显示每个commit的引用(如:分支、tag等)<br>–oneline 一行显示<br>–simplify-by-decoration 只显示被branch或tag引用的commit<br>–all 表示显示所有的branch，这里也可以选择，比如我指向显示分支ABC的关系，则将–all替换为branchA branchB branchC</p>
+<h2 id="查看更改"><a href="#查看更改" class="headerlink" title="查看更改"></a>查看更改</h2><p><img src="/img/git4.png" alt=""><br>Git show <commitid> 查看某次更改的内容，不填写提交ID的话，显示最近一次更改的内容，id通过git log查询</commitid></p>
+<h2 id="撤销更改"><a href="#撤销更改" class="headerlink" title="撤销更改"></a>撤销更改</h2><pre><code> 撤销本地修改
+跟踪的文件撤销修改
+ git checkout .
+未跟踪的文件撤销修改
+git clean -n        查看将要清除的文件
+git clean -df         删除未跟踪的文件
+</code></pre><h3 id="撤销暂存-暂存的文件取消暂存变成已修改未暂存"><a href="#撤销暂存-暂存的文件取消暂存变成已修改未暂存" class="headerlink" title="撤销暂存,暂存的文件取消暂存变成已修改未暂存"></a>撤销暂存,暂存的文件取消暂存变成已修改未暂存</h3><p>Git reset HEAD b.txt<br><img src="/img/git5.png" alt=""></p>
+<h3 id="更改commit提交信息"><a href="#更改commit提交信息" class="headerlink" title="更改commit提交信息"></a>更改commit提交信息</h3><p>Git commit –amend进入编辑器更改提交信息<br>或者<br>Git commit –amend -m <newtips><br><img src="/img/git6.png" alt=""><br>将提交信息由change b 更改为change b.txt,<br>将提交信息由change b.txt更改为rechange b.txt</newtips></p>
+<h3 id="撤销提交-commit-文件"><a href="#撤销提交-commit-文件" class="headerlink" title="撤销提交(commit)文件"></a>撤销提交(commit)文件</h3><p>Git reset –hard <sha><br><img src="/img/git7.png" alt=""><br>Rechange b.txt的更改全部丢弃，本地也没有修改的文件</sha></p>
+<p>Git reset <sha><br><img src="/img/git8.png" alt=""><br>reset后修改的文件仍然保留在本地磁盘</sha></p>
+<h3 id="在撤销commit后再恢复"><a href="#在撤销commit后再恢复" class="headerlink" title="在撤销commit后再恢复"></a>在撤销commit后再恢复</h3><p>reset后又还是想commit刚刚撤销的文件<br>Git reflog<br>Git cherry-pick <sha><br>查看HEAD改变的历史记录，它涉及的只是 HEAD 的改变。在你切换分支、用 git commit 进行提交、以及用 git reset 撤销 commit 时，HEAD 会改变，但当你用  git checkout – <bad filename=""> 撤销时，HEAD 并不会改变 — 如前所述，这些修改从来没有被提交过，因此 reflog 也无法帮助我们恢复它们。<br><img src="/img/git9.png" alt=""></bad></sha></p>
+<h3 id="撤销merge"><a href="#撤销merge" class="headerlink" title="撤销merge"></a>撤销merge</h3><p>道理同撤销commit一样<br>Git reset –hard <sha><br>如果merge出现冲突的话<br>Git merge –abort</sha></p>
+<h3 id="撤销已经push的内容"><a href="#撤销已经push的内容" class="headerlink" title="撤销已经push的内容"></a>撤销已经push的内容</h3><p>Git revert HEAD       撤销前一次push<br>Git revert HEAD^       撤销前前一次push<br>Git revert <sha><br>但是并不是之前提交的东西在分支上没有，还是会有记录的，另外假如后悔revert后，可以再revert一遍…<br><img src="/img/git10.png" alt=""></sha></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/08/24/浏览器及div的各种宽高/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1063,7 +1201,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
