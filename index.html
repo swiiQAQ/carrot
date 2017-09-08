@@ -250,6 +250,154 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/09/08/关于全屏滚动切换开发中碰到的知识点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="swii">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小萝卜头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/08/关于全屏滚动切换开发中碰到的知识点/" itemprop="url">
+                  关于全屏滚动切换开发中碰到的知识点
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-08T15:46:42+08:00">
+                2017-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-关于-function-自执行函数"><a href="#1-关于-function-自执行函数" class="headerlink" title="1.关于(function(){})()自执行函数"></a>1.关于(function(){})()自执行函数</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var a = (function()&#123;</div><div class="line">	return 'swii';</div><div class="line">&#125;)()</div><div class="line">var b = (function()&#123;</div><div class="line">	return &#123;</div><div class="line">		name: "swii"</div><div class="line">	&#125;;</div><div class="line">&#125;)();</div><div class="line">var c = (function()&#123;</div><div class="line">	return&#123;</div><div class="line">		showName: function()&#123;</div><div class="line">			console.log('swii');</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>a    string<br>b    Object<br>C    Object<br>b.name    String<br>C.showName    function</p>
+<p>除了return的内容，其他的内容都是私有的；</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var mySingleton = function()&#123;</div><div class="line">	var privateVariable = 'private';</div><div class="line">	function showPrivate()&#123;</div><div class="line">		console.log(privateVariable);</div><div class="line">	&#125;</div><div class="line">	return &#123;</div><div class="line">		publicMethod: function()&#123;</div><div class="line">			showPrivate();</div><div class="line">		&#125;,</div><div class="line">		publicVar: 'the public can see this'</div><div class="line">	&#125;;</div><div class="line">&#125;;</div><div class="line">var single = mySingleton();</div><div class="line">single.publicMethod();</div><div class="line">console.log(single.publicVar);</div></pre></td></tr></table></figure>
+<p>privateVariable是私有变量<br>showPrivate是私有方法<br>只有return里面的publicMethod是公有方法，publicVar是公有变量</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var singletonTester = (function()&#123;</div><div class="line">function singleton(args)&#123;</div><div class="line">	var args = args || &#123;&#125;;</div><div class="line">	this.name = 'SingletonTester';</div><div class="line">	this.pointX = args.pointX || 6;</div><div class="line">	this.pointY = args.pointY || 10;</div><div class="line">&#125;</div><div class="line">var instance;</div><div class="line">var _static = &#123;</div><div class="line">	getInstance: function(args)&#123;</div><div class="line">		if(instance === undefined)&#123;</div><div class="line">		instance = new singleton(args);</div><div class="line">		&#125;</div><div class="line">	return instance;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">return _static;</div><div class="line">&#125;)();</div><div class="line">var singletonTest = singletonTester.getInstance(&#123;pointX:10&#125;);</div><div class="line">console.log(singletonTest);</div></pre></td></tr></table></figure>
+<h3 id="2-闭包的作用："><a href="#2-闭包的作用：" class="headerlink" title="2.闭包的作用："></a>2.闭包的作用：</h3><p>1、避免全局依赖<br>2、避免第三方破坏<br>3、兼容jquery操作符$和jquery</p>
+<h3 id="3-单例模式"><a href="#3-单例模式" class="headerlink" title="3.单例模式"></a>3.单例模式</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$.fn.MyPlugin = function()&#123;</div><div class="line">	Var me = $(this),</div><div class="line">	Instance = me .data("myPlugin");</div><div class="line">	If(!instance)&#123;</div><div class="line">		Me.data("myPlugin",(instance = new myPlugin()));</div><div class="line">	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果实例存在则不再重新创建实例，利用data()来存放插件对象的实例</p>
+<h3 id="4-深拷贝和浅拷贝："><a href="#4-深拷贝和浅拷贝：" class="headerlink" title="4.深拷贝和浅拷贝："></a>4.深拷贝和浅拷贝：</h3><p>浅拷贝类似于引用类型只是复制了地址，但是两个变量指向的还是同一个地址<br>而深拷贝则是新变量与旧变量的地址不同，独立存在的。</p>
+<h3 id="5-fn-prototype"><a href="#5-fn-prototype" class="headerlink" title="5.$.fn===$.prototype"></a>5.$.fn===$.prototype</h3><h3 id="6-jquery方法-data"><a href="#6-jquery方法-data" class="headerlink" title="6.jquery方法 data()"></a>6.jquery方法 data()</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(selector).Data(name,value)	设置value</div><div class="line">$(selector).Data(name)	取出value</div><div class="line">Var obj = new Object();</div><div class="line">Obj.say="say sth";</div><div class="line">Obj.play="play sth";</div><div class="line">$(selector).data(obj);</div><div class="line">Alert($(selector).data("say"))     //say sth</div></pre></td></tr></table></figure>
+<h3 id="7-jquery方法-extend"><a href="#7-jquery方法-extend" class="headerlink" title="7.jquery方法 $.extend()"></a>7.jquery方法 $.extend()</h3><p>1、$.extend(dest,src1,src2)<br>将src1和src2合并至dest中；得到的结果也是dest</p>
+<p>Var result = $.extend({},{name:”tom”,age:21},{name:”jerry”,animal:”mouse”})<br>//result: {name:”jerry”,age:21,animal:”mouse”}</p>
+<p>如果后面的参数和前面的参数有重复的话，后面的会覆盖前面的，得到最终的是合并的结构<br>2、$.extend(src)<br>将src合并到jquery的全局对象中<br>$.extend({<br>    hello: function(){console.log(“hello”)}<br>});<br>$.hello()    //hello<br>3、$.fn.extend(src)<br>将src合并到jquery的实例对象中<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$.fn.extend(&#123;</div><div class="line">	hello: function()&#123;</div><div class="line">		Console.log("hello")</div><div class="line">	&#125;</div><div class="line">&#125;)</div><div class="line">$("selector").hello()     //hello</div></pre></td></tr></table></figure></p>
+<p>4、$.extend(boolean,dest,src1,src2)<br>  第一个参数boolean代表是否进行深度拷贝，其余参数和前面介绍的一致，什么叫深层拷贝，我们看一个例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var result=$.extend( true, &#123;&#125;, </div><div class="line">&#123; name: "John", location: &#123;city: "Boston",county:"USA"&#125; &#125;, </div><div class="line">&#123; last: "Resig", location: &#123;state: "MA",county:"China"&#125; &#125; );</div></pre></td></tr></table></figure></p>
+<p>我们可以看出src1中嵌套子对象location:{city:”Boston”},src2中也嵌套子对象location:{state:”MA”}。<br>第一个深度拷贝参数为true，那么合并后的结果就是：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">result=&#123;name:"John",last:"Resig",</div><div class="line">location:&#123;city:"Boston",state:"MA",county:"China"&#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>也就是说它会将src中的嵌套子对象也进行合并，而如果第一个参数boolean为false，我们看看合并的结果是什么，如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var result=$.extend( false, &#123;&#125;, </div><div class="line">&#123; name: "John", location:&#123;city: "Boston",county:"USA"&#125; &#125;, </div><div class="line">&#123; last: "Resig", location: &#123;state: "MA",county:"China"&#125; &#125; </div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>那么合并后的结果就是:<br>result={name:”John”,last:”Resig”,location:{state:”MA”,county:”China”}}</p>
+<h3 id="8-滚轮事件"><a href="#8-滚轮事件" class="headerlink" title="8.滚轮事件"></a>8.滚轮事件</h3><p>关于滚轮事件，除了火狐浏览器，其他浏览器都是通过wheeldalta来判断，火狐浏览器通过detail<br>向下滚动时，wheeldalta为-120，detail为3</p>
+<h3 id="9-键盘事件"><a href="#9-键盘事件" class="headerlink" title="9.键盘事件"></a>9.键盘事件</h3><p>js中<br>IE    keyCode<br>Firefox    which和charCode<br>Opera    keyCode和which等<br>jquery中通过.witch和.keyCode<br>左 37<br>上38<br>右39<br>下40</p>
+<h3 id="10"><a href="#10" class="headerlink" title="10."></a>10.</h3><p>类级别的开发<br>1、添加新的全局函数<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">jQuery.foo = function() &#123;   </div><div class="line"> alert("This is a test.");  </div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>2、增加多个全局函数<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">jQuery.foo = function()&#123;</div><div class="line">  alert("This is a test.");  </div><div class="line">&#125;;</div><div class="line">jQuery.bar = function(param)&#123;</div><div class="line">	alert("This is another test.");</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>调用<br>  $.foo();<br>  $.bar(“bar”)</p>
+<p>3、使用jQuery.extend(object)添加全局函数<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">jQuery.extend(&#123;</div><div class="line">	foo:function()&#123;</div><div class="line">		alert("This is a test.");    </div><div class="line">	&#125;,</div><div class="line">	bar:function()&#123;</div><div class="line">		alert("This is another test");</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>4、使用命名空间<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">jQuery.myPlugin = &#123;</div><div class="line">   foo:function()&#123;</div><div class="line">       alert("This is a test.");</div><div class="line">   &#125;,</div><div class="line">    bar:function("bar")&#123;</div><div class="line">       alert("This is another test.");</div><div class="line">   &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>调用<br>    $.myPlugin.foo();<br>    $.myPlugin.bar(“bar”);</p>
+<p>对象级别的插件开发<br>1、<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(function($)&#123;</div><div class="line">    $.fn.pluginName = function()&#123;</div><div class="line">    	// 插件代码写在这里 </div><div class="line">	&#125;</div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure></p>
+<p>上面定义了一个jQuery函数，形参是$,函数定义完成后，把jQuery这个实参传递进去，立即调用执行，这样的好处是我们在写jQuery插件时，也可以使用$这个别名，而不会与prototype引起冲突。</p>
+<p>调用<br>    $(“nav”).pluginName()<br>2、接受options参数移控制插件的行为</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/09/06/字符串和数组的操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1326,7 +1474,7 @@ git clean -df         删除未跟踪的文件
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
