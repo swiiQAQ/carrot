@@ -90,18 +90,19 @@
 
 
 
-<meta name="description" content="浏览器视口宽高js1234window.innerWidth（包括滚动条宽度）window.innerHeight（包括滚动条高度）document.documentElement.clientWidth（不包括滚动条宽度）document.documentElement.clientHeight（不包括滚动条高度） 整个页面的宽高，不包括滚动条宽高js12document.body.client">
+<meta name="description" content="^        开头                $        结尾                \d        匹配数字                \w        匹配数字或者字母                \s        匹配空格                {5}        匹配六位数字                [0-9]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器及div的各种宽高">
-<meta property="og:url" content="https://swiiqaq.github.io/2017/08/24/浏览器及div的各种宽高/index.html">
+<meta property="og:title" content="正则表达式的整理">
+<meta property="og:url" content="https://swiiqaq.github.io/2017/09/13/正则表达式的整理/index.html">
 <meta property="og:site_name" content="小萝卜头">
-<meta property="og:description" content="浏览器视口宽高js1234window.innerWidth（包括滚动条宽度）window.innerHeight（包括滚动条高度）document.documentElement.clientWidth（不包括滚动条宽度）document.documentElement.clientHeight（不包括滚动条高度） 整个页面的宽高，不包括滚动条宽高js12document.body.client">
-<meta property="og:image" content="https://swiiqaq.github.io/img/FirefoxInnerVsOuterHeight2.png">
-<meta property="og:updated_time" content="2017-08-24T08:55:40.281Z">
+<meta property="og:description" content="^        开头                $        结尾                \d        匹配数字                \w        匹配数字或者字母                \s        匹配空格                {5}        匹配六位数字                [0-9]">
+<meta property="og:image" content="https://swiiqaq.github.io/2017/09/13/images/reg1.png">
+<meta property="og:image" content="https://swiiqaq.github.io/2017/09/13/images/reg2.png">
+<meta property="og:updated_time" content="2017-09-13T16:10:05.710Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浏览器及div的各种宽高">
-<meta name="twitter:description" content="浏览器视口宽高js1234window.innerWidth（包括滚动条宽度）window.innerHeight（包括滚动条高度）document.documentElement.clientWidth（不包括滚动条宽度）document.documentElement.clientHeight（不包括滚动条高度） 整个页面的宽高，不包括滚动条宽高js12document.body.client">
-<meta name="twitter:image" content="https://swiiqaq.github.io/img/FirefoxInnerVsOuterHeight2.png">
+<meta name="twitter:title" content="正则表达式的整理">
+<meta name="twitter:description" content="^        开头                $        结尾                \d        匹配数字                \w        匹配数字或者字母                \s        匹配空格                {5}        匹配六位数字                [0-9]">
+<meta name="twitter:image" content="https://swiiqaq.github.io/2017/09/13/images/reg1.png">
 
 
 
@@ -129,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://swiiqaq.github.io/2017/08/24/浏览器及div的各种宽高/"/>
+  <link rel="canonical" href="https://swiiqaq.github.io/2017/09/13/正则表达式的整理/"/>
 
 
 
 
 
-  <title>浏览器及div的各种宽高 | 小萝卜头</title>
+  <title>正则表达式的整理 | 小萝卜头</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -254,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/08/24/浏览器及div的各种宽高/">
+    <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/09/13/正则表达式的整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="swii">
@@ -275,7 +276,7 @@
             
             
               
-                浏览器及div的各种宽高
+                正则表达式的整理
               
             
           </h1>
@@ -290,8 +291,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-24T16:38:23+08:00">
-                2017-08-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T16:19:36+08:00">
+                2017-09-13
               </time>
             
 
@@ -325,11 +326,11 @@
       
 
       
-        <h3 id="浏览器视口宽高"><a href="#浏览器视口宽高" class="headerlink" title="浏览器视口宽高"></a>浏览器视口宽高</h3><h4 id="js"><a href="#js" class="headerlink" title="js"></a>js</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">window.innerWidth（包括滚动条宽度）</div><div class="line">window.innerHeight（包括滚动条高度）</div><div class="line">document.documentElement.clientWidth（不包括滚动条宽度）</div><div class="line">document.documentElement.clientHeight（不包括滚动条高度）</div></pre></td></tr></table></figure>
-<h3 id="整个页面的宽高，不包括滚动条宽高"><a href="#整个页面的宽高，不包括滚动条宽高" class="headerlink" title="整个页面的宽高，不包括滚动条宽高"></a>整个页面的宽高，不包括滚动条宽高</h3><h4 id="js-1"><a href="#js-1" class="headerlink" title="js"></a>js</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">document.body.clientWidth()</div><div class="line">document.body.clientHeight()</div></pre></td></tr></table></figure>
-<h4 id="JQUERY"><a href="#JQUERY" class="headerlink" title="JQUERY"></a>JQUERY</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$("body").width()</div><div class="line">$("body").height()</div></pre></td></tr></table></figure>
-<h3 id="浏览器的视口高度包括头上的选项卡地址栏的高度"><a href="#浏览器的视口高度包括头上的选项卡地址栏的高度" class="headerlink" title="浏览器的视口高度包括头上的选项卡地址栏的高度"></a>浏览器的视口高度包括头上的选项卡地址栏的高度</h3><h4 id="js-2"><a href="#js-2" class="headerlink" title="js"></a>js</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">window.outerWidth</div><div class="line">window.outerHeight</div></pre></td></tr></table></figure>
-<p><img src="/img/FirefoxInnerVsOuterHeight2.png" alt=""> </p>
+        <table><br>    <tr><br>        <td>^</td><br>        <td>开头</td><br>    </tr><br>    <tr><br>        <td>$</td><br>        <td>结尾</td><br>    </tr><br>    <tr><br>        <td>\d</td><br>        <td>匹配数字</td><br>    </tr><br>    <tr><br>        <td>\w</td><br>        <td>匹配数字或者字母</td><br>    </tr><br>    <tr><br>        <td>\s</td><br>        <td>匹配空格</td><br>    </tr><br>    <tr><br>        <td>{5}</td><br>        <td>匹配六位数字</td><br>    </tr><br>    <tr><br>        <td>[0-9]</td><br>        <td>匹配0-9之间的数字</td><br>    </tr><br>    <tr><br>        <td>[A-z]</td><br>        <td>从大写A匹配至小写z</td><br>    </tr><br>    <tr><br>        <td>.*</td><br>        <td>.*表示任意字符任意长度(.是任意字符*是任意长度）</td><br>    </tr><br>    <tr><br>        <td>\D</td><br>        <td>匹配非数字</td><br>    </tr><br>    <tr><br>        <td>\W</td><br>        <td>匹配非数字或者字母（包括空格下划线等）</td><br>    </tr><br>    <tr><br>        <td>+    </td><br>        <td>匹配任何包含至少一个n的字符串（从首字母开始匹配直到匹配到符合标准的然后到符合标准的字符串结束）</td><br>    </tr><br>    <tr><br>        <td>“asjkf1234567”.match(/\d+/)    [‘1234567’]</td><br>        <td>[‘1234567’]</td><br>    </tr><br>    <tr><br>        <td>“asjkf123dsfjk4567”.match(/\d+/)</td><br>        <td>[‘123’]</td><br>    </tr><br>    <tr><br>        <td>“asjkf1234567”.match(/\d/g)</td><br>        <td>[‘1’,’2’,’3’,’4’,’5’,’6’,’7’]（/g和+的区别）</td><br>    </tr><br>    <tr><br>        <td>?</td><br>        <td>匹配任何包含零个或一个 n 的字符串。（从首字母开始匹配，如果首字母不符合返回“”，如果首字母符合返回首字母）</td><br>    </tr><br>    <tr><br>        <td>“asjkf1234567”.match(/\d?/)</td><br>        <td>[“”]</td><br>    </tr><br>    <tr><br>        <td>“1234567”.match(/\d?/)</td><br>        <td>[“1”]</td><br>    </tr><br>    <tr><br>        <td>*</td><br>        <td>匹配任何包含零个或多个 n 的字符串。(从首字母开始匹配，如果匹配不符合返回“”，如果符合则进行匹配到结束）</td><br>    </tr><br>    <tr><br>        <td>“asjkf1234567”.match(/\d<em>/)</em></td><br>        <td>[“1234567”]</td><br>    </tr><br>    <tr><br>        <td>“1234567”.match(/\d?/)</td><br>        <td>[“1”]</td><br>    </tr><br>    <tr><br>        <td>“asjkf123dsfjk4567”.match(/\d/))</td><br>        <td>[“123”]</td><br>    </tr><br></table>
+
+<p>+和*和？和/g<br><img src="../images/reg1.png" alt=""><br><img src="../images/reg2.png" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var myReg = /(w+)s(w+)/; </div><div class="line">var str = "John Smith"; </div><div class="line">var newstr = str.replace(myReg, "$2, $1"); </div><div class="line">document.write(newstr);</div></pre></td></tr></table></figure>
+<p>去除所有空格<br>“  ajsdh asda adf “.replace(/\s/g,””);<br>验证邮箱<br>(/.<em>@.</em>..*/).test(“abc@hotmail.com”)<br>验证手机号码<br>/^1[34578]\d{9}$/.test(“17612341234”)</p>
 
       
     </div>
@@ -366,8 +367,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/21/换设备后如何继续写博客/" rel="next" title="换设备后如何继续写博客">
-                <i class="fa fa-chevron-left"></i> 换设备后如何继续写博客
+              <a href="/2017/09/08/关于全屏滚动切换开发中碰到的知识点/" rel="next" title="关于全屏滚动切换开发中碰到的知识点">
+                <i class="fa fa-chevron-left"></i> 关于全屏滚动切换开发中碰到的知识点
               </a>
             
           </div>
@@ -375,10 +376,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/27/git命令/" rel="prev" title="git命令">
-                git命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -425,17 +422,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -479,22 +467,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器视口宽高"><span class="nav-number">1.</span> <span class="nav-text">浏览器视口宽高</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#js"><span class="nav-number">1.1.</span> <span class="nav-text">js</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整个页面的宽高，不包括滚动条宽高"><span class="nav-number">2.</span> <span class="nav-text">整个页面的宽高，不包括滚动条宽高</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#js-1"><span class="nav-number">2.1.</span> <span class="nav-text">js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JQUERY"><span class="nav-number">2.2.</span> <span class="nav-text">JQUERY</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器的视口高度包括头上的选项卡地址栏的高度"><span class="nav-number">3.</span> <span class="nav-text">浏览器的视口高度包括头上的选项卡地址栏的高度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#js-2"><span class="nav-number">3.1.</span> <span class="nav-text">js</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

@@ -197,7 +197,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -207,7 +207,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -240,6 +240,130 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/09/13/正则表达式的整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="swii">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小萝卜头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/13/正则表达式的整理/" itemprop="url">
+                  正则表达式的整理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T16:19:36+08:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <table><br>    <tr><br>        <td>^</td><br>        <td>开头</td><br>    </tr><br>    <tr><br>        <td>$</td><br>        <td>结尾</td><br>    </tr><br>    <tr><br>        <td>\d</td><br>        <td>匹配数字</td><br>    </tr><br>    <tr><br>        <td>\w</td><br>        <td>匹配数字或者字母</td><br>    </tr><br>    <tr><br>        <td>\s</td><br>        <td>匹配空格</td><br>    </tr><br>    <tr><br>        <td>{5}</td><br>        <td>匹配六位数字</td><br>    </tr><br>    <tr><br>        <td>[0-9]</td><br>        <td>匹配0-9之间的数字</td><br>    </tr><br>    <tr><br>        <td>[A-z]</td><br>        <td>从大写A匹配至小写z</td><br>    </tr><br>    <tr><br>        <td>.*</td><br>        <td>.*表示任意字符任意长度(.是任意字符*是任意长度）</td><br>    </tr><br>    <tr><br>        <td>\D</td><br>        <td>匹配非数字</td><br>    </tr><br>    <tr><br>        <td>\W</td><br>        <td>匹配非数字或者字母（包括空格下划线等）</td><br>    </tr><br>    <tr><br>        <td>+    </td><br>        <td>匹配任何包含至少一个n的字符串（从首字母开始匹配直到匹配到符合标准的然后到符合标准的字符串结束）</td><br>    </tr><br>    <tr><br>        <td>“asjkf1234567”.match(/\d+/)    [‘1234567’]</td><br>        <td>[‘1234567’]</td><br>    </tr><br>    <tr><br>        <td>“asjkf123dsfjk4567”.match(/\d+/)</td><br>        <td>[‘123’]</td><br>    </tr><br>    <tr><br>        <td>“asjkf1234567”.match(/\d/g)</td><br>        <td>[‘1’,’2’,’3’,’4’,’5’,’6’,’7’]（/g和+的区别）</td><br>    </tr><br>    <tr><br>        <td>?</td><br>        <td>匹配任何包含零个或一个 n 的字符串。（从首字母开始匹配，如果首字母不符合返回“”，如果首字母符合返回首字母）</td><br>    </tr><br>    <tr><br>        <td>“asjkf1234567”.match(/\d?/)</td><br>        <td>[“”]</td><br>    </tr><br>    <tr><br>        <td>“1234567”.match(/\d?/)</td><br>        <td>[“1”]</td><br>    </tr><br>    <tr><br>        <td>*</td><br>        <td>匹配任何包含零个或多个 n 的字符串。(从首字母开始匹配，如果匹配不符合返回“”，如果符合则进行匹配到结束）</td><br>    </tr><br>    <tr><br>        <td>“asjkf1234567”.match(/\d<em>/)</em></td><br>        <td>[“1234567”]</td><br>    </tr><br>    <tr><br>        <td>“1234567”.match(/\d?/)</td><br>        <td>[“1”]</td><br>    </tr><br>    <tr><br>        <td>“asjkf123dsfjk4567”.match(/\d/))</td><br>        <td>[“123”]</td><br>    </tr><br></table>
+
+<p>+和*和？和/g<br><img src="../images/reg1.png" alt=""><br><img src="../images/reg2.png" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var myReg = /(w+)s(w+)/; </div><div class="line">var str = "John Smith"; </div><div class="line">var newstr = str.replace(myReg, "$2, $1"); </div><div class="line">document.write(newstr);</div></pre></td></tr></table></figure>
+<p>去除所有空格<br>“  ajsdh asda adf “.replace(/\s/g,””);<br>验证邮箱<br>(/.<em>@.</em>..*/).test(“abc@hotmail.com”)<br>验证手机号码<br>/^1[34578]\d{9}$/.test(“17612341234”)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -287,7 +411,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-08T15:46:42+08:00">
                 2017-09-08
@@ -435,7 +559,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-06T11:49:14+08:00">
                 2017-09-06
@@ -560,7 +684,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T19:37:00+08:00">
                 2017-08-27
@@ -698,7 +822,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-24T16:38:23+08:00">
                 2017-08-24
@@ -822,7 +946,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-21T16:29:16+08:00">
                 2017-08-21
@@ -950,7 +1074,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-17T10:35:24+08:00">
                 2017-08-17
@@ -1092,7 +1216,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-27T14:49:21+08:00">
                 2017-06-27
@@ -1227,7 +1351,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-03T15:21:45+08:00">
                 2017-05-03
@@ -1347,9 +1471,9 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-03T15:15:38+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-03T15:15:36+08:00">
                 2017-05-03
               </time>
             
@@ -1474,8 +1598,8 @@ git clean -df         删除未跟踪的文件
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -1529,7 +1653,7 @@ git clean -df         删除未跟踪的文件
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
