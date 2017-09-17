@@ -197,7 +197,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -207,7 +207,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -287,7 +287,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T16:19:36+08:00">
                 2017-09-13
@@ -326,11 +326,173 @@
       
         
           
-            <table><br>    <tr><br>        <td>^</td><br>        <td>开头</td><br>    </tr><br>    <tr><br>        <td>$</td><br>        <td>结尾</td><br>    </tr><br>    <tr><br>        <td>\d</td><br>        <td>匹配数字</td><br>    </tr><br>    <tr><br>        <td>\w</td><br>        <td>匹配数字或者字母</td><br>    </tr><br>    <tr><br>        <td>\s</td><br>        <td>匹配空格</td><br>    </tr><br>    <tr><br>        <td>{5}</td><br>        <td>匹配六位数字</td><br>    </tr><br>    <tr><br>        <td>[0-9]</td><br>        <td>匹配0-9之间的数字</td><br>    </tr><br>    <tr><br>        <td>[A-z]</td><br>        <td>从大写A匹配至小写z</td><br>    </tr><br>    <tr><br>        <td>.*</td><br>        <td>.*表示任意字符任意长度(.是任意字符*是任意长度）</td><br>    </tr><br>    <tr><br>        <td>\D</td><br>        <td>匹配非数字</td><br>    </tr><br>    <tr><br>        <td>\W</td><br>        <td>匹配非数字或者字母（包括空格下划线等）</td><br>    </tr><br>    <tr><br>        <td>+    </td><br>        <td>匹配任何包含至少一个n的字符串（从首字母开始匹配直到匹配到符合标准的然后到符合标准的字符串结束）</td><br>    </tr><br>    <tr><br>        <td>“asjkf1234567”.match(/\d+/)    [‘1234567’]</td><br>        <td>[‘1234567’]</td><br>    </tr><br>    <tr><br>        <td>“asjkf123dsfjk4567”.match(/\d+/)</td><br>        <td>[‘123’]</td><br>    </tr><br>    <tr><br>        <td>“asjkf1234567”.match(/\d/g)</td><br>        <td>[‘1’,’2’,’3’,’4’,’5’,’6’,’7’]（/g和+的区别）</td><br>    </tr><br>    <tr><br>        <td>?</td><br>        <td>匹配任何包含零个或一个 n 的字符串。（从首字母开始匹配，如果首字母不符合返回“”，如果首字母符合返回首字母）</td><br>    </tr><br>    <tr><br>        <td>“asjkf1234567”.match(/\d?/)</td><br>        <td>[“”]</td><br>    </tr><br>    <tr><br>        <td>“1234567”.match(/\d?/)</td><br>        <td>[“1”]</td><br>    </tr><br>    <tr><br>        <td>*</td><br>        <td>匹配任何包含零个或多个 n 的字符串。(从首字母开始匹配，如果匹配不符合返回“”，如果符合则进行匹配到结束）</td><br>    </tr><br>    <tr><br>        <td>“asjkf1234567”.match(/\d<em>/)</em></td><br>        <td>[“1234567”]</td><br>    </tr><br>    <tr><br>        <td>“1234567”.match(/\d?/)</td><br>        <td>[“1”]</td><br>    </tr><br>    <tr><br>        <td>“asjkf123dsfjk4567”.match(/\d/))</td><br>        <td>[“123”]</td><br>    </tr><br></table>
-
-<p>+和*和？和/g<br><img src="../images/reg1.png" alt=""><br><img src="../images/reg2.png" alt=""></p>
+            <h3 id="正则是匹配模式，要么匹配字符，要么匹配位置。"><a href="#正则是匹配模式，要么匹配字符，要么匹配位置。" class="headerlink" title="正则是匹配模式，要么匹配字符，要么匹配位置。"></a>正则是匹配模式，要么匹配字符，要么匹配位置。</h3><h3 id="匹配字符"><a href="#匹配字符" class="headerlink" title="匹配字符"></a>匹配字符</h3><h4 id="元字符表"><a href="#元字符表" class="headerlink" title="元字符表"></a>元字符表</h4><table>
+<thead>
+<tr>
+<th>元字符</th>
+<th style="text-align:center">释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td style="text-align:center">开头</td>
+</tr>
+<tr>
+<td>$</td>
+<td style="text-align:center">结尾</td>
+</tr>
+<tr>
+<td>\d</td>
+<td style="text-align:center">匹配数字</td>
+</tr>
+<tr>
+<td>\w</td>
+<td style="text-align:center">匹配数字或者字母</td>
+</tr>
+<tr>
+<td>\s</td>
+<td style="text-align:center">匹配空格</td>
+</tr>
+<tr>
+<td>{5}</td>
+<td style="text-align:center">匹配6位数字</td>
+</tr>
+<tr>
+<td>[0-9]</td>
+<td style="text-align:center">匹配0-9之间的数字</td>
+</tr>
+<tr>
+<td>[A-z]</td>
+<td style="text-align:center">从大写A匹配至小写z</td>
+</tr>
+<tr>
+<td>.*</td>
+<td style="text-align:center">.*表示任意字符任意长度(.是任意字符*是任意长度）</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>反元字符</th>
+<th style="text-align:center">释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\D</td>
+<td style="text-align:center">匹配非数字</td>
+</tr>
+<tr>
+<td>\W</td>
+<td style="text-align:center">匹配非数字或者字母（包括空格下划线等）</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>量词</th>
+<th style="text-align:center">释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td style="text-align:center">匹配任何包含至少一个n的字符串（从首字母开始匹配直到匹配到符合标准的然后到符合标准的字符串结束）</td>
+</tr>
+<tr>
+<td>“asjkf1234567”.match(/\d+/)</td>
+<td style="text-align:center">[‘1234567’]</td>
+</tr>
+<tr>
+<td>“asjkf123dsfjk4567”.match(/\d+/)</td>
+<td style="text-align:center">[‘123’]</td>
+</tr>
+<tr>
+<td>“asjkf1234567”.match(/\d/g)</td>
+<td style="text-align:center">[‘1’,’2’,’3’,’4’,’5’,’6’,’7’]（/g和+的区别）</td>
+</tr>
+<tr>
+<td>?</td>
+<td style="text-align:center">匹配任何包含零个或一个 n 的字符串。（从首字母开始匹配，如果首字母不符合返回“”，如果首字母符合返回首字母）</td>
+</tr>
+<tr>
+<td>“asjkf1234567”.match(/\d?/)</td>
+<td style="text-align:center">[“”]</td>
+</tr>
+<tr>
+<td>“1234567”.match(/\d?/)</td>
+<td style="text-align:center">[“1”]</td>
+</tr>
+<tr>
+<td>*</td>
+<td style="text-align:center">&gt;匹配任何包含零个或多个 n 的字符串。(从首字母开始匹配，如果匹配不符合返回“”，如果符合则进行匹配到结束）</td>
+</tr>
+<tr>
+<td>“asjkf1234567”.match(/\d*/)</td>
+<td style="text-align:center">[“1234567”]</td>
+</tr>
+<tr>
+<td>“asjkf123dsfjk4567”.match(/\d*/))</td>
+<td style="text-align:center">[“123”]</td>
+</tr>
+<tr>
+<td>{m,}</td>
+<td style="text-align:center">至少出现m次</td>
+</tr>
+<tr>
+<td>{m,m}</td>
+<td style="text-align:center">出现m次</td>
+</tr>
+<tr>
+<td>？</td>
+<td style="text-align:center">出现或者不出现</td>
+</tr>
+<tr>
+<td>+等价于{1,}</td>
+<td style="text-align:center">至少出现一次</td>
+</tr>
+<tr>
+<td>*等价于{0,}</td>
+<td style="text-align:center">表示出现任意次</td>
+</tr>
+</tbody>
+</table>
+<h4 id="横向模糊匹配"><a href="#横向模糊匹配" class="headerlink" title="横向模糊匹配"></a>横向模糊匹配</h4><p>“ab abbc”.match(/ab{2,5}c/g)<br>模糊匹配数量</p>
+<h4 id="纵向模糊匹配"><a href="#纵向模糊匹配" class="headerlink" title="纵向模糊匹配"></a>纵向模糊匹配</h4><p>“a1b”.match(/a[1-3]b)<br>模糊匹配内容</p>
+<h4 id="惰性匹配"><a href="#惰性匹配" class="headerlink" title="惰性匹配"></a>惰性匹配</h4><p>“12312345”.match(/\d{2,5}?/g)<br>[“12”,”31”,”23”,”45”]<br>匹配到第二个就不再匹配</p>
+<h3 id="匹配位置"><a href="#匹配位置" class="headerlink" title="匹配位置"></a>匹配位置</h3><p>1、^和$<br>^匹配开头，$匹配结尾<br>2、\b和\B<br>\b是单词边界，具体就是\w和\W之间的位置，也包括\w和^之间的位置，也包括\w和$之间的位置。<br>3、?=p,?!p,?&lt;=p,?&lt;/!p</p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th style="text-align:center">释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>?=</td>
+<td style="text-align:center">positive lookahead</td>
+</tr>
+<tr>
+<td>?!</td>
+<td style="text-align:center">negative lookahead</td>
+</tr>
+<tr>
+<td>?&lt;=</td>
+<td style="text-align:center">positive lookbehind</td>
+</tr>
+<tr>
+<td>?&lt;!p</td>
+<td style="text-align:center">negative lookbehind</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var result = "hello".replace(/(?=l)/g, '#');</div><div class="line">console.log(result); </div><div class="line">// =&gt; "he#l#lo"</div><div class="line"></div><div class="line">var result = "hello".replace(/(?!l)/g, '#');</div><div class="line">console.log(result); </div><div class="line">// =&gt; "#h#ell#o#"</div></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var myReg = /(w+)s(w+)/; </div><div class="line">var str = "John Smith"; </div><div class="line">var newstr = str.replace(myReg, "$2, $1"); </div><div class="line">document.write(newstr);</div></pre></td></tr></table></figure>
-<p>去除所有空格<br>“  ajsdh asda adf “.replace(/\s/g,””);<br>验证邮箱<br>(/.<em>@.</em>..*/).test(“abc@hotmail.com”)<br>验证手机号码<br>/^1[34578]\d{9}$/.test(“17612341234”)</p>
+<h3 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式"></a>常用正则表达式</h3><p>去除所有空格<br>“  ajsdh asda adf “.replace(/\s/g,””);<br>验证邮箱<br>(/.<em>@.</em>..*/).test(“abc@hotmail.com”)<br>验证手机号码<br>/^1[34578]\d{9}$/.test(“17612341234”)<br>验证时间<br>(/^[01][0-9]|[2][0-3]:[0-5][0-9]$/).test(“23:59”)<br>验证颜色<br>“#fef1a2”.match(/#[0-9a-fA-F]{3,6}/g)<br>验证日期<br>(/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|[3][0])$/).test(“2017-02-22”)<br>按照1000金额划分<br>“123456789”.replace(/(?!^)(?=(\d{3})+$)/g,”,”)     //123，456，789</p>
 
           
         
@@ -411,7 +573,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-08T15:46:42+08:00">
                 2017-09-08
@@ -559,7 +721,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-06T11:49:14+08:00">
                 2017-09-06
@@ -684,7 +846,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T19:37:00+08:00">
                 2017-08-27
@@ -822,7 +984,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-24T16:38:23+08:00">
                 2017-08-24
@@ -946,7 +1108,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-21T16:29:16+08:00">
                 2017-08-21
@@ -1074,7 +1236,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-17T10:35:24+08:00">
                 2017-08-17
@@ -1216,7 +1378,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-27T14:49:21+08:00">
                 2017-06-27
@@ -1351,7 +1513,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-03T15:21:45+08:00">
                 2017-05-03
@@ -1471,7 +1633,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-03T15:15:36+08:00">
                 2017-05-03
@@ -1599,7 +1761,7 @@ git clean -df         删除未跟踪的文件
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -1653,7 +1815,7 @@ git clean -df         删除未跟踪的文件
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
