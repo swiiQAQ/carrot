@@ -197,7 +197,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -207,7 +207,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -287,7 +287,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-21T00:07:58+08:00">
                 2017-09-21
@@ -331,12 +331,14 @@
 <h3 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h3><p>变量对象的创建，依次经历了以下几个过程。<br>1、建立参数对象<br>2、检查当前上下文的函数声明，也就是使用function关键字声明的函数。在变量对象中以函数名建立一个属性，属性值为指向该函数所在内存地址的引用。如果函数名的属性已经存在，那么该属性将会被新的引用所覆盖。<br>3、检查当前上下文中的变量声明，每找到一个变量声明，就在变量对象中以变量名建立一个属性，属性值为undefined。如果该变量名的属性已经存在，为了防止同名的函数被修改为undefined，则会直接跳过，原属性值不会被修改。</p>
 <p>下面举例：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function test() &#123;</div><div class="line">    console.log(foo);</div><div class="line">    console.log(bar);</div><div class="line"></div><div class="line">    var foo = 'Hello';</div><div class="line">    console.log(foo);</div><div class="line">    var bar = function () &#123;</div><div class="line">        return 'world';</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function foo() &#123;</div><div class="line">        return 'hello';</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">test();</div></pre></td></tr></table></figure></p>
 <p>1、进入创建阶段，先进行function的声明，所以foo此时是个函数<br>2、进行foo和bar的赋值，发现foo已经是个函数了，所以跳过重新声明，而bar被声明为undefined<br>3、进入执行阶段，所以第一遍打印出来是foo (){return ‘world’}<br>4、第二遍打印为undefined<br>5、然后foo被赋值为hello<br>6、第三遍打印为Hello</p>
+<h3 id="执行上下文和变量对象、作用域链、this的关系"><a href="#执行上下文和变量对象、作用域链、this的关系" class="headerlink" title="执行上下文和变量对象、作用域链、this的关系"></a>执行上下文和变量对象、作用域链、this的关系</h3><p>每个执行上下文都有以下三个属性：</p>
+<p>1、变量对象：存储了上下文中定义的变量和函数声明，在函数定义阶段是变量对象；在执行阶段是活动对象。<br>2、作用域链：作用域链是保证执行上下文有权访问的所有变量和函数的有序访问。 最上面的栈是当前函数的变量对象，然后是父级上下文的变量对象，最后是全局变量对象。<br>3、this</p>
 <h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><h4 id="什么是闭包"><a href="#什么是闭包" class="headerlink" title="什么是闭包"></a>什么是闭包</h4><p>闭包是指有权访问另一个函数作用于中的变量的函数。<br>通常，函数的作用域及其所有变量都会在函数执行结束后被销毁。但是，在创建了一个闭包以后，这个函数的作用域就会一直保存到闭包不存在为止。</p>
 <h4 id="需要闭包的理由"><a href="#需要闭包的理由" class="headerlink" title="需要闭包的理由"></a>需要闭包的理由</h4><p>局部变量无法共享和长久的保存，而全局变量可能造成变量污染，所以我们希望有一种机制既可以长久的保存变量又不会造成全局污染。</p>
 <h4 id="闭包的缺点"><a href="#闭包的缺点" class="headerlink" title="闭包的缺点"></a>闭包的缺点</h4><p>闭包的缺点就是常驻内存会增大内存使用量，并且使用不当很容易造成内存泄露。<br>如果不是因为某些特殊任务而需要闭包，在没有必要的情况下，在其它函数中创建函数是不明智的，因为闭包对脚本性能具有负面影响，包括处理速度和内存消耗。</p>
 <h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>1.定义外层函数，封装被保护的局部变量。<br>2.定义内层函数，执行对外部函数变量的操作。<br>3.外层函数返回内层函数的对象，并且外层函数被调用，结果保存在一个全局的变量中。</p>
 <h4 id="使用例子"><a href="#使用例子" class="headerlink" title="使用例子"></a>使用例子</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var x=10;</div><div class="line">function foo(a)&#123;</div><div class="line">    var b=20;</div><div class="line">    function bar(c)&#123;</div><div class="line">        var d=30;</div><div class="line">        return boop(x+a+b+c+d);</div><div class="line">    &#125;</div><div class="line">    function boop(e)&#123;</div><div class="line">        return e * -1;</div><div class="line">    &#125;</div><div class="line">    return bar;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var moar=foo(5); // 闭包</div><div class="line">moar(15); //-80</div></pre></td></tr></table></figure>
-<p>foo(5)执行的时候，将a,b的值存在闭包里面,等到执行moar(15)时再将15传入bar中，最终x,a,b,c,d的值都获取到了<br>下图为调试器中观察闭包<br><img src="../images/closure.png" alt=""></p>
+<p>foo(5)执行的时候，将a,b的值存在闭包里面,等到执行moar(15)时再将15传入bar中，最终x,a,b,c,d的值都获取到了<br><img src="/img/closure.png" alt="" title="调试器中观察闭包"></p>
 <h4 id="闭包中的this对象"><a href="#闭包中的this对象" class="headerlink" title="闭包中的this对象"></a>闭包中的this对象</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var name = "The Window";</div><div class="line">var obj = &#123;</div><div class="line">    name: "My Object",</div><div class="line">  </div><div class="line">    getName: function()&#123;</div><div class="line">        return function()&#123;</div><div class="line">            return this.name;</div><div class="line">        &#125;;</div><div class="line">    &#125;,</div><div class="line">    getObjName: function()&#123;</div><div class="line">        var _this = this;</div><div class="line">        return function()&#123;</div><div class="line">            return _this.name;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">console.log(obj.getName()());  // The Window</div><div class="line">console.log(obj.getObjName()()); //My Object</div></pre></td></tr></table></figure>
 <p>匿名函数的执行环境具有全局性，因此其 this 对象通常指向 window。<br>而事先将this存在_this中，此时的this指向的是obj对象。</p>
 <h4 id="setTimeout循环和闭包的经典例子"><a href="#setTimeout循环和闭包的经典例子" class="headerlink" title="setTimeout循环和闭包的经典例子"></a>setTimeout循环和闭包的经典例子</h4><h5 id="setTimeout的执行时间"><a href="#setTimeout的执行时间" class="headerlink" title="setTimeout的执行时间"></a>setTimeout的执行时间</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">setTimeout(function()&#123;</div><div class="line">    console.log("third")</div><div class="line">&#125;,100)</div><div class="line">setTimeout(function()&#123;</div><div class="line">    console.log("second")</div><div class="line">&#125;,0)</div><div class="line">console.log("first")</div></pre></td></tr></table></figure>
@@ -425,7 +427,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T16:19:36+08:00">
                 2017-09-13
@@ -711,7 +713,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-08T15:46:42+08:00">
                 2017-09-08
@@ -859,7 +861,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-06T11:49:14+08:00">
                 2017-09-06
@@ -984,7 +986,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T19:37:00+08:00">
                 2017-08-27
@@ -1042,7 +1044,7 @@ git clean -df         删除未跟踪的文件
 <h3 id="在撤销commit后再恢复"><a href="#在撤销commit后再恢复" class="headerlink" title="在撤销commit后再恢复"></a>在撤销commit后再恢复</h3><p>reset后又还是想commit刚刚撤销的文件<br>Git reflog<br>Git cherry-pick <sha><br>查看HEAD改变的历史记录，它涉及的只是 HEAD 的改变。在你切换分支、用 git commit 进行提交、以及用 git reset 撤销 commit 时，HEAD 会改变，但当你用  git checkout – <bad filename=""> 撤销时，HEAD 并不会改变 — 如前所述，这些修改从来没有被提交过，因此 reflog 也无法帮助我们恢复它们。<br><img src="/img/git9.png" alt=""></bad></sha></p>
 <h3 id="撤销merge"><a href="#撤销merge" class="headerlink" title="撤销merge"></a>撤销merge</h3><p>道理同撤销commit一样<br>Git reset –hard <sha><br>如果merge出现冲突的话<br>Git merge –abort</sha></p>
 <h3 id="撤销已经push的内容"><a href="#撤销已经push的内容" class="headerlink" title="撤销已经push的内容"></a>撤销已经push的内容</h3><p>Git revert HEAD       撤销前一次push<br>Git revert HEAD^       撤销前前一次push<br>Git revert <sha><br>但是并不是之前提交的东西在分支上没有，还是会有记录的，另外假如后悔revert后，可以再revert一遍…<br><img src="/img/git10.png" alt=""></sha></p>
-
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><h3 id="rebase和merge的区别"><a href="#rebase和merge的区别" class="headerlink" title="rebase和merge的区别"></a>rebase和merge的区别</h3>
           
         
       
@@ -1122,7 +1124,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-24T16:38:23+08:00">
                 2017-08-24
@@ -1246,7 +1248,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-21T16:29:16+08:00">
                 2017-08-21
@@ -1374,7 +1376,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-17T10:35:24+08:00">
                 2017-08-17
@@ -1516,7 +1518,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-27T14:49:21+08:00">
                 2017-06-27
@@ -1651,7 +1653,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-03T15:21:45+08:00">
                 2017-05-03
@@ -1775,7 +1777,7 @@ git clean -df         删除未跟踪的文件
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -1829,7 +1831,7 @@ git clean -df         删除未跟踪的文件
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

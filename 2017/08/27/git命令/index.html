@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://swiiqaq.github.io/img/git8.png">
 <meta property="og:image" content="https://swiiqaq.github.io/img/git9.png">
 <meta property="og:image" content="https://swiiqaq.github.io/img/git10.png">
-<meta property="og:updated_time" content="2017-08-30T08:51:34.098Z">
+<meta property="og:updated_time" content="2017-09-28T03:05:58.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git命令">
 <meta name="twitter:description" content="分支Git branch 查看当前分支Git branch -a 查看远程分支和当前分支Git branch test 建立新分支 Git branch -d branchName 删除本地某分支Git branch -r -d origin/branchName 删除远程分支Git push origin: branchName 删除远程分支 查看分支之间的关系和commit日志 git log">
@@ -210,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -220,7 +220,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -297,7 +297,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T19:37:00+08:00">
                 2017-08-27
@@ -353,7 +353,7 @@ git clean -df         删除未跟踪的文件
 <h3 id="在撤销commit后再恢复"><a href="#在撤销commit后再恢复" class="headerlink" title="在撤销commit后再恢复"></a>在撤销commit后再恢复</h3><p>reset后又还是想commit刚刚撤销的文件<br>Git reflog<br>Git cherry-pick <sha><br>查看HEAD改变的历史记录，它涉及的只是 HEAD 的改变。在你切换分支、用 git commit 进行提交、以及用 git reset 撤销 commit 时，HEAD 会改变，但当你用  git checkout – <bad filename=""> 撤销时，HEAD 并不会改变 — 如前所述，这些修改从来没有被提交过，因此 reflog 也无法帮助我们恢复它们。<br><img src="/img/git9.png" alt=""></bad></sha></p>
 <h3 id="撤销merge"><a href="#撤销merge" class="headerlink" title="撤销merge"></a>撤销merge</h3><p>道理同撤销commit一样<br>Git reset –hard <sha><br>如果merge出现冲突的话<br>Git merge –abort</sha></p>
 <h3 id="撤销已经push的内容"><a href="#撤销已经push的内容" class="headerlink" title="撤销已经push的内容"></a>撤销已经push的内容</h3><p>Git revert HEAD       撤销前一次push<br>Git revert HEAD^       撤销前前一次push<br>Git revert <sha><br>但是并不是之前提交的东西在分支上没有，还是会有记录的，另外假如后悔revert后，可以再revert一遍…<br><img src="/img/git10.png" alt=""></sha></p>
-
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><h3 id="rebase和merge的区别"><a href="#rebase和merge的区别" class="headerlink" title="rebase和merge的区别"></a>rebase和merge的区别</h3>
       
     </div>
 
@@ -450,10 +450,10 @@ git clean -df         删除未跟踪的文件
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -474,7 +474,7 @@ git clean -df         删除未跟踪的文件
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -512,7 +512,7 @@ git clean -df         删除未跟踪的文件
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分支"><span class="nav-number">1.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看分支之间的关系和commit日志"><span class="nav-number">2.</span> <span class="nav-text">查看分支之间的关系和commit日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看更改"><span class="nav-number">3.</span> <span class="nav-text">查看更改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#撤销更改"><span class="nav-number">4.</span> <span class="nav-text">撤销更改</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销暂存-暂存的文件取消暂存变成已修改未暂存"><span class="nav-number">4.1.</span> <span class="nav-text">撤销暂存,暂存的文件取消暂存变成已修改未暂存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改commit提交信息"><span class="nav-number">4.2.</span> <span class="nav-text">更改commit提交信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销提交-commit-文件"><span class="nav-number">4.3.</span> <span class="nav-text">撤销提交(commit)文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在撤销commit后再恢复"><span class="nav-number">4.4.</span> <span class="nav-text">在撤销commit后再恢复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销merge"><span class="nav-number">4.5.</span> <span class="nav-text">撤销merge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销已经push的内容"><span class="nav-number">4.6.</span> <span class="nav-text">撤销已经push的内容</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分支"><span class="nav-number">1.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看分支之间的关系和commit日志"><span class="nav-number">2.</span> <span class="nav-text">查看分支之间的关系和commit日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看更改"><span class="nav-number">3.</span> <span class="nav-text">查看更改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#撤销更改"><span class="nav-number">4.</span> <span class="nav-text">撤销更改</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销暂存-暂存的文件取消暂存变成已修改未暂存"><span class="nav-number">4.1.</span> <span class="nav-text">撤销暂存,暂存的文件取消暂存变成已修改未暂存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改commit提交信息"><span class="nav-number">4.2.</span> <span class="nav-text">更改commit提交信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销提交-commit-文件"><span class="nav-number">4.3.</span> <span class="nav-text">撤销提交(commit)文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在撤销commit后再恢复"><span class="nav-number">4.4.</span> <span class="nav-text">在撤销commit后再恢复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销merge"><span class="nav-number">4.5.</span> <span class="nav-text">撤销merge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销已经push的内容"><span class="nav-number">4.6.</span> <span class="nav-text">撤销已经push的内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并分支"><span class="nav-number">5.</span> <span class="nav-text">合并分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rebase和merge的区别"><span class="nav-number">5.1.</span> <span class="nav-text">rebase和merge的区别</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -544,7 +544,7 @@ git clean -df         删除未跟踪的文件
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
