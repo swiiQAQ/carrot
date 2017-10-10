@@ -1,0 +1,833 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="正则是匹配模式，要么匹配字符，要么匹配位置。匹配字符元字符表   元字符 释义     ^ 开头   $ 结尾   \d 匹配数字   \w 匹配数字或者字母   \s 匹配空格   {5} 匹配6位数字   [0-9] 匹配0-9之间的数字   [A-z] 从大写A匹配至小写z   .* .*表示任意字符任意长度(.是任意字符*是任意长度）       反元字符 释义     \D 匹配非数字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式的整理">
+<meta property="og:url" content="https://swiiqaq.github.io/2017/09/13/正则表达式的整理/index.html">
+<meta property="og:site_name" content="小萝卜头">
+<meta property="og:description" content="正则是匹配模式，要么匹配字符，要么匹配位置。匹配字符元字符表   元字符 释义     ^ 开头   $ 结尾   \d 匹配数字   \w 匹配数字或者字母   \s 匹配空格   {5} 匹配6位数字   [0-9] 匹配0-9之间的数字   [A-z] 从大写A匹配至小写z   .* .*表示任意字符任意长度(.是任意字符*是任意长度）       反元字符 释义     \D 匹配非数字">
+<meta property="og:updated_time" content="2017-09-17T17:38:07.338Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式的整理">
+<meta name="twitter:description" content="正则是匹配模式，要么匹配字符，要么匹配位置。匹配字符元字符表   元字符 释义     ^ 开头   $ 结尾   \d 匹配数字   \w 匹配数字或者字母   \s 匹配空格   {5} 匹配6位数字   [0-9] 匹配0-9之间的数字   [A-z] 从大写A匹配至小写z   .* .*表示任意字符任意长度(.是任意字符*是任意长度）       反元字符 释义     \D 匹配非数字">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://swiiqaq.github.io/2017/09/13/正则表达式的整理/"/>
+
+
+
+
+
+  <title>正则表达式的整理 | 小萝卜头</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小萝卜头</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/09/13/正则表达式的整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="swii">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小萝卜头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                正则表达式的整理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T16:19:36+08:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="正则是匹配模式，要么匹配字符，要么匹配位置。"><a href="#正则是匹配模式，要么匹配字符，要么匹配位置。" class="headerlink" title="正则是匹配模式，要么匹配字符，要么匹配位置。"></a>正则是匹配模式，要么匹配字符，要么匹配位置。</h3><h3 id="匹配字符"><a href="#匹配字符" class="headerlink" title="匹配字符"></a>匹配字符</h3><h4 id="元字符表"><a href="#元字符表" class="headerlink" title="元字符表"></a>元字符表</h4><table>
+<thead>
+<tr>
+<th>元字符</th>
+<th style="text-align:center">释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td style="text-align:center">开头</td>
+</tr>
+<tr>
+<td>$</td>
+<td style="text-align:center">结尾</td>
+</tr>
+<tr>
+<td>\d</td>
+<td style="text-align:center">匹配数字</td>
+</tr>
+<tr>
+<td>\w</td>
+<td style="text-align:center">匹配数字或者字母</td>
+</tr>
+<tr>
+<td>\s</td>
+<td style="text-align:center">匹配空格</td>
+</tr>
+<tr>
+<td>{5}</td>
+<td style="text-align:center">匹配6位数字</td>
+</tr>
+<tr>
+<td>[0-9]</td>
+<td style="text-align:center">匹配0-9之间的数字</td>
+</tr>
+<tr>
+<td>[A-z]</td>
+<td style="text-align:center">从大写A匹配至小写z</td>
+</tr>
+<tr>
+<td>.*</td>
+<td style="text-align:center">.*表示任意字符任意长度(.是任意字符*是任意长度）</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>反元字符</th>
+<th style="text-align:center">释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\D</td>
+<td style="text-align:center">匹配非数字</td>
+</tr>
+<tr>
+<td>\W</td>
+<td style="text-align:center">匹配非数字或者字母（包括空格下划线等）</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>量词</th>
+<th style="text-align:center">释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td style="text-align:center">匹配任何包含至少一个n的字符串（从首字母开始匹配直到匹配到符合标准的然后到符合标准的字符串结束）</td>
+</tr>
+<tr>
+<td>“asjkf1234567”.match(/\d+/)</td>
+<td style="text-align:center">[‘1234567’]</td>
+</tr>
+<tr>
+<td>“asjkf123dsfjk4567”.match(/\d+/)</td>
+<td style="text-align:center">[‘123’]</td>
+</tr>
+<tr>
+<td>“asjkf1234567”.match(/\d/g)</td>
+<td style="text-align:center">[‘1’,’2’,’3’,’4’,’5’,’6’,’7’]（/g和+的区别）</td>
+</tr>
+<tr>
+<td>?</td>
+<td style="text-align:center">匹配任何包含零个或一个 n 的字符串。（从首字母开始匹配，如果首字母不符合返回“”，如果首字母符合返回首字母）</td>
+</tr>
+<tr>
+<td>“asjkf1234567”.match(/\d?/)</td>
+<td style="text-align:center">[“”]</td>
+</tr>
+<tr>
+<td>“1234567”.match(/\d?/)</td>
+<td style="text-align:center">[“1”]</td>
+</tr>
+<tr>
+<td>*</td>
+<td style="text-align:center">&gt;匹配任何包含零个或多个 n 的字符串。(从首字母开始匹配，如果匹配不符合返回“”，如果符合则进行匹配到结束）</td>
+</tr>
+<tr>
+<td>“asjkf1234567”.match(/\d*/)</td>
+<td style="text-align:center">[“1234567”]</td>
+</tr>
+<tr>
+<td>“asjkf123dsfjk4567”.match(/\d*/))</td>
+<td style="text-align:center">[“123”]</td>
+</tr>
+<tr>
+<td>{m,}</td>
+<td style="text-align:center">至少出现m次</td>
+</tr>
+<tr>
+<td>{m,m}</td>
+<td style="text-align:center">出现m次</td>
+</tr>
+<tr>
+<td>？</td>
+<td style="text-align:center">出现或者不出现</td>
+</tr>
+<tr>
+<td>+等价于{1,}</td>
+<td style="text-align:center">至少出现一次</td>
+</tr>
+<tr>
+<td>*等价于{0,}</td>
+<td style="text-align:center">表示出现任意次</td>
+</tr>
+</tbody>
+</table>
+<h4 id="横向模糊匹配"><a href="#横向模糊匹配" class="headerlink" title="横向模糊匹配"></a>横向模糊匹配</h4><p>“ab abbc”.match(/ab{2,5}c/g)<br>模糊匹配数量</p>
+<h4 id="纵向模糊匹配"><a href="#纵向模糊匹配" class="headerlink" title="纵向模糊匹配"></a>纵向模糊匹配</h4><p>“a1b”.match(/a[1-3]b)<br>模糊匹配内容</p>
+<h4 id="惰性匹配"><a href="#惰性匹配" class="headerlink" title="惰性匹配"></a>惰性匹配</h4><p>“12312345”.match(/\d{2,5}?/g)<br>[“12”,”31”,”23”,”45”]<br>匹配到第二个就不再匹配</p>
+<h3 id="匹配位置"><a href="#匹配位置" class="headerlink" title="匹配位置"></a>匹配位置</h3><p>1、^和$<br>^匹配开头，$匹配结尾<br>2、\b和\B<br>\b是单词边界，具体就是\w和\W之间的位置，也包括\w和^之间的位置，也包括\w和$之间的位置。<br>3、?=p,?!p,?&lt;=p,?&lt;/!p</p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th style="text-align:center">释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>?=</td>
+<td style="text-align:center">positive lookahead</td>
+</tr>
+<tr>
+<td>?!</td>
+<td style="text-align:center">negative lookahead</td>
+</tr>
+<tr>
+<td>?&lt;=</td>
+<td style="text-align:center">positive lookbehind</td>
+</tr>
+<tr>
+<td>?&lt;!p</td>
+<td style="text-align:center">negative lookbehind</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var result = "hello".replace(/(?=l)/g, '#');</div><div class="line">console.log(result); </div><div class="line">// =&gt; "he#l#lo"</div><div class="line"></div><div class="line">var result = "hello".replace(/(?!l)/g, '#');</div><div class="line">console.log(result); </div><div class="line">// =&gt; "#h#ell#o#"</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var myReg = /(w+)s(w+)/; </div><div class="line">var str = "John Smith"; </div><div class="line">var newstr = str.replace(myReg, "$2, $1"); </div><div class="line">document.write(newstr);</div></pre></td></tr></table></figure>
+<h3 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式"></a>常用正则表达式</h3><p>去除所有空格<br>“  ajsdh asda adf “.replace(/\s/g,””);<br>验证邮箱<br>(/.<em>@.</em>..*/).test(“abc@hotmail.com”)<br>验证手机号码<br>/^1[34578]\d{9}$/.test(“17612341234”)<br>验证时间<br>(/^[01][0-9]|[2][0-3]:[0-5][0-9]$/).test(“23:59”)<br>验证颜色<br>“#fef1a2”.match(/#[0-9a-fA-F]{3,6}/g)<br>验证日期<br>(/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|[3][0])$/).test(“2017-02-22”)<br>按照1000金额划分<br>“123456789”.replace(/(?!^)(?=(\d{3})+$)/g,”,”)     //123，456，789</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/08/关于全屏滚动切换开发中碰到的知识点/" rel="next" title="关于全屏滚动切换开发中碰到的知识点">
+                <i class="fa fa-chevron-left"></i> 关于全屏滚动切换开发中碰到的知识点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/21/闭包/" rel="prev" title="闭包">
+                闭包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="swii" />
+          <p class="site-author-name" itemprop="name">swii</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#正则是匹配模式，要么匹配字符，要么匹配位置。"><span class="nav-number">1.</span> <span class="nav-text">正则是匹配模式，要么匹配字符，要么匹配位置。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配字符"><span class="nav-number">2.</span> <span class="nav-text">匹配字符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符表"><span class="nav-number">2.1.</span> <span class="nav-text">元字符表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#横向模糊匹配"><span class="nav-number">2.2.</span> <span class="nav-text">横向模糊匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#纵向模糊匹配"><span class="nav-number">2.3.</span> <span class="nav-text">纵向模糊匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#惰性匹配"><span class="nav-number">2.4.</span> <span class="nav-text">惰性匹配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配位置"><span class="nav-number">3.</span> <span class="nav-text">匹配位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用正则表达式"><span class="nav-number">4.</span> <span class="nav-text">常用正则表达式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">swii</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

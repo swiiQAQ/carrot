@@ -1,0 +1,689 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="执行上下文在创建一个函数时，会产生相对应的执行上下文。123456789101112131415var color = &apos;blue&apos;;function changeColor() &amp;#123;    var anotherColor = &apos;red&apos;;    function swapColors() &amp;#123;        var tempColor = anotherColor;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="闭包">
+<meta property="og:url" content="https://swiiqaq.github.io/2017/09/21/闭包/index.html">
+<meta property="og:site_name" content="小萝卜头">
+<meta property="og:description" content="执行上下文在创建一个函数时，会产生相对应的执行上下文。123456789101112131415var color = &apos;blue&apos;;function changeColor() &amp;#123;    var anotherColor = &apos;red&apos;;    function swapColors() &amp;#123;        var tempColor = anotherColor;">
+<meta property="og:image" content="https://swiiqaq.github.io/img/closure.png">
+<meta property="og:updated_time" content="2017-09-28T03:16:02.565Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="闭包">
+<meta name="twitter:description" content="执行上下文在创建一个函数时，会产生相对应的执行上下文。123456789101112131415var color = &apos;blue&apos;;function changeColor() &amp;#123;    var anotherColor = &apos;red&apos;;    function swapColors() &amp;#123;        var tempColor = anotherColor;">
+<meta name="twitter:image" content="https://swiiqaq.github.io/img/closure.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://swiiqaq.github.io/2017/09/21/闭包/"/>
+
+
+
+
+
+  <title>闭包 | 小萝卜头</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小萝卜头</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/09/21/闭包/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="swii">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小萝卜头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                闭包
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-21T00:07:58+08:00">
+                2017-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h3><p>在创建一个函数时，会产生相对应的执行上下文。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var color = 'blue';</div><div class="line"></div><div class="line">function changeColor() &#123;</div><div class="line">    var anotherColor = 'red';</div><div class="line"></div><div class="line">    function swapColors() &#123;</div><div class="line">        var tempColor = anotherColor;</div><div class="line">        anotherColor = color;</div><div class="line">        color = tempColor;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    swapColors();</div><div class="line">&#125;</div><div class="line"></div><div class="line">changeColor();</div></pre></td></tr></table></figure></p>
+<p>具体顺序为：<br>1、在该环境中，首先是是全局上下文，然后是changeColor的执行上下文，最后是swapColors的执行上下文，依次进入堆栈。<br>2、在退出函数时，该函数的执行上下文也被pop出来，知道最后是全局上下文。<br>3、全局上下文只要页面不关闭，都是一直存在的。</p>
+<h3 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h3><p>变量对象的创建，依次经历了以下几个过程。<br>1、建立参数对象<br>2、检查当前上下文的函数声明，也就是使用function关键字声明的函数。在变量对象中以函数名建立一个属性，属性值为指向该函数所在内存地址的引用。如果函数名的属性已经存在，那么该属性将会被新的引用所覆盖。<br>3、检查当前上下文中的变量声明，每找到一个变量声明，就在变量对象中以变量名建立一个属性，属性值为undefined。如果该变量名的属性已经存在，为了防止同名的函数被修改为undefined，则会直接跳过，原属性值不会被修改。</p>
+<p>下面举例：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function test() &#123;</div><div class="line">    console.log(foo);</div><div class="line">    console.log(bar);</div><div class="line"></div><div class="line">    var foo = 'Hello';</div><div class="line">    console.log(foo);</div><div class="line">    var bar = function () &#123;</div><div class="line">        return 'world';</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function foo() &#123;</div><div class="line">        return 'hello';</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">test();</div></pre></td></tr></table></figure></p>
+<p>1、进入创建阶段，先进行function的声明，所以foo此时是个函数<br>2、进行foo和bar的赋值，发现foo已经是个函数了，所以跳过重新声明，而bar被声明为undefined<br>3、进入执行阶段，所以第一遍打印出来是foo (){return ‘world’}<br>4、第二遍打印为undefined<br>5、然后foo被赋值为hello<br>6、第三遍打印为Hello</p>
+<h3 id="执行上下文和变量对象、作用域链、this的关系"><a href="#执行上下文和变量对象、作用域链、this的关系" class="headerlink" title="执行上下文和变量对象、作用域链、this的关系"></a>执行上下文和变量对象、作用域链、this的关系</h3><p>每个执行上下文都有以下三个属性：</p>
+<p>1、变量对象：存储了上下文中定义的变量和函数声明，在函数定义阶段是变量对象；在执行阶段是活动对象。<br>2、作用域链：作用域链是保证执行上下文有权访问的所有变量和函数的有序访问。 最上面的栈是当前函数的变量对象，然后是父级上下文的变量对象，最后是全局变量对象。<br>3、this</p>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><h4 id="什么是闭包"><a href="#什么是闭包" class="headerlink" title="什么是闭包"></a>什么是闭包</h4><p>闭包是指有权访问另一个函数作用于中的变量的函数。<br>通常，函数的作用域及其所有变量都会在函数执行结束后被销毁。但是，在创建了一个闭包以后，这个函数的作用域就会一直保存到闭包不存在为止。</p>
+<h4 id="需要闭包的理由"><a href="#需要闭包的理由" class="headerlink" title="需要闭包的理由"></a>需要闭包的理由</h4><p>局部变量无法共享和长久的保存，而全局变量可能造成变量污染，所以我们希望有一种机制既可以长久的保存变量又不会造成全局污染。</p>
+<h4 id="闭包的缺点"><a href="#闭包的缺点" class="headerlink" title="闭包的缺点"></a>闭包的缺点</h4><p>闭包的缺点就是常驻内存会增大内存使用量，并且使用不当很容易造成内存泄露。<br>如果不是因为某些特殊任务而需要闭包，在没有必要的情况下，在其它函数中创建函数是不明智的，因为闭包对脚本性能具有负面影响，包括处理速度和内存消耗。</p>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>1.定义外层函数，封装被保护的局部变量。<br>2.定义内层函数，执行对外部函数变量的操作。<br>3.外层函数返回内层函数的对象，并且外层函数被调用，结果保存在一个全局的变量中。</p>
+<h4 id="使用例子"><a href="#使用例子" class="headerlink" title="使用例子"></a>使用例子</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var x=10;</div><div class="line">function foo(a)&#123;</div><div class="line">    var b=20;</div><div class="line">    function bar(c)&#123;</div><div class="line">        var d=30;</div><div class="line">        return boop(x+a+b+c+d);</div><div class="line">    &#125;</div><div class="line">    function boop(e)&#123;</div><div class="line">        return e * -1;</div><div class="line">    &#125;</div><div class="line">    return bar;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var moar=foo(5); // 闭包</div><div class="line">moar(15); //-80</div></pre></td></tr></table></figure>
+<p>foo(5)执行的时候，将a,b的值存在闭包里面,等到执行moar(15)时再将15传入bar中，最终x,a,b,c,d的值都获取到了<br><img src="/img/closure.png" alt="" title="调试器中观察闭包"></p>
+<h4 id="闭包中的this对象"><a href="#闭包中的this对象" class="headerlink" title="闭包中的this对象"></a>闭包中的this对象</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var name = "The Window";</div><div class="line">var obj = &#123;</div><div class="line">    name: "My Object",</div><div class="line">  </div><div class="line">    getName: function()&#123;</div><div class="line">        return function()&#123;</div><div class="line">            return this.name;</div><div class="line">        &#125;;</div><div class="line">    &#125;,</div><div class="line">    getObjName: function()&#123;</div><div class="line">        var _this = this;</div><div class="line">        return function()&#123;</div><div class="line">            return _this.name;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">console.log(obj.getName()());  // The Window</div><div class="line">console.log(obj.getObjName()()); //My Object</div></pre></td></tr></table></figure>
+<p>匿名函数的执行环境具有全局性，因此其 this 对象通常指向 window。<br>而事先将this存在_this中，此时的this指向的是obj对象。</p>
+<h4 id="setTimeout循环和闭包的经典例子"><a href="#setTimeout循环和闭包的经典例子" class="headerlink" title="setTimeout循环和闭包的经典例子"></a>setTimeout循环和闭包的经典例子</h4><h5 id="setTimeout的执行时间"><a href="#setTimeout的执行时间" class="headerlink" title="setTimeout的执行时间"></a>setTimeout的执行时间</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">setTimeout(function()&#123;</div><div class="line">    console.log("third")</div><div class="line">&#125;,100)</div><div class="line">setTimeout(function()&#123;</div><div class="line">    console.log("second")</div><div class="line">&#125;,0)</div><div class="line">console.log("first")</div></pre></td></tr></table></figure>
+<p>即使第二个定时器的执行时间是0，但是只要是关于定时器的操作，都是在所有可执行代码执行完毕之后，才会开始执行由setTimeout定义的操作。<br>而关于定时器的执行顺序是push至队列中，而这些操作进入队列的顺序，则由设定的延迟时间来决定。<br>所以最终显示的结果是first second third</p>
+<h5 id="例子解析"><a href="#例子解析" class="headerlink" title="例子解析"></a>例子解析</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">for (var i=1; i<span class="tag">&lt;<span class="name">=5;</span> <span class="attr">i</span>++) &#123; </span></div><div class="line">    <span class="attr">setTimeout</span>( <span class="attr">function</span> <span class="attr">timer</span>() &#123;</div><div class="line">        <span class="attr">console.log</span>(<span class="attr">i</span>);</div><div class="line">    &#125;, <span class="attr">i</span>*<span class="attr">1000</span> );</div><div class="line">&#125;</div><div class="line">// <span class="attr">6</span> <span class="attr">6</span> <span class="attr">6</span> <span class="attr">6</span> <span class="attr">6</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">for (var i=1; i<span class="tag">&lt;<span class="name">=5;</span> <span class="attr">i</span>++) &#123; </span></div><div class="line">    <span class="attr">setTimeout</span>( <span class="attr">function</span> <span class="attr">timer</span>(<span class="attr">i</span>) &#123;</div><div class="line">        <span class="attr">console.log</span>(<span class="attr">i</span>);</div><div class="line">    &#125;(<span class="attr">i</span>), <span class="attr">i</span>*<span class="attr">1000</span> );</div><div class="line">&#125;</div><div class="line">// <span class="attr">1</span> <span class="attr">2</span> <span class="attr">3</span> <span class="attr">4</span> <span class="attr">5</span></div></pre></td></tr></table></figure>
+<p>在第一个段代码中，因为定时器会在所有操作完毕后再执行，所以在执行timer的时候，外部的i已经循环完了，<br>所以循环五遍打印出来的都是最后一位数，即6.<br>而在第二段的代码中，使用自执行函数将i保存在闭包中，当setTimeout中定义的操作执行时，则访问对应闭包保存的i值即可。</p>
+<h4 id="关于闭包的偏函数应用"><a href="#关于闭包的偏函数应用" class="headerlink" title="关于闭包的偏函数应用"></a>关于闭包的偏函数应用</h4><h5 id="什么是偏函数应用"><a href="#什么是偏函数应用" class="headerlink" title="什么是偏函数应用"></a>什么是偏函数应用</h5><p>一个过程，它传给某个函数其中一部分参数，然后返回一个新的函数，该函数等待接受后续参数。换句话说，偏函数应用是一个函数，它接受另一个函数为参数，这个作为参数的函数本身接受多个参数，它返回一个函数，这个函数与它的参数函数相比，接受更少的参数。偏函数应用提前赋予一部分参数，而返回的函数则等待调用时传入剩余的参数。</p>
+<h5 id="偏函数的例子"><a href="#偏函数的例子" class="headerlink" title="偏函数的例子"></a>偏函数的例子</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function fun(n,o)&#123;</div><div class="line">  console.log(o);</div><div class="line">  return &#123;</div><div class="line">    fun: function(m)&#123;</div><div class="line">      return fun(m,n);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = fun(0);  // undefined</div><div class="line">a.fun(1);        // 0        </div><div class="line">a.fun(2);        // 0</div><div class="line">a.fun(3);        // 0</div><div class="line"></div><div class="line">var b = fun(0).fun(1).fun(2).fun(3);  // undefined 0 1 2</div><div class="line"></div><div class="line">var c = fun(0).fun(1);  // undefined 0</div><div class="line">c.fun(2);        // 1</div><div class="line">c.fun(3);        // 1</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/13/正则表达式的整理/" rel="next" title="正则表达式的整理">
+                <i class="fa fa-chevron-left"></i> 正则表达式的整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/29/大佬们研究的css黑魔法/" rel="prev" title="大佬们研究的css黑魔法">
+                大佬们研究的css黑魔法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="swii" />
+          <p class="site-author-name" itemprop="name">swii</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#执行上下文"><span class="nav-number">1.</span> <span class="nav-text">执行上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量对象"><span class="nav-number">2.</span> <span class="nav-text">变量对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行上下文和变量对象、作用域链、this的关系"><span class="nav-number">3.</span> <span class="nav-text">执行上下文和变量对象、作用域链、this的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包"><span class="nav-number">4.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是闭包"><span class="nav-number">4.1.</span> <span class="nav-text">什么是闭包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需要闭包的理由"><span class="nav-number">4.2.</span> <span class="nav-text">需要闭包的理由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包的缺点"><span class="nav-number">4.3.</span> <span class="nav-text">闭包的缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用方法"><span class="nav-number">4.4.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用例子"><span class="nav-number">4.5.</span> <span class="nav-text">使用例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包中的this对象"><span class="nav-number">4.6.</span> <span class="nav-text">闭包中的this对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setTimeout循环和闭包的经典例子"><span class="nav-number">4.7.</span> <span class="nav-text">setTimeout循环和闭包的经典例子</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#setTimeout的执行时间"><span class="nav-number">4.7.1.</span> <span class="nav-text">setTimeout的执行时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#例子解析"><span class="nav-number">4.7.2.</span> <span class="nav-text">例子解析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于闭包的偏函数应用"><span class="nav-number">4.8.</span> <span class="nav-text">关于闭包的偏函数应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是偏函数应用"><span class="nav-number">4.8.1.</span> <span class="nav-text">什么是偏函数应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#偏函数的例子"><span class="nav-number">4.8.2.</span> <span class="nav-text">偏函数的例子</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">swii</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
