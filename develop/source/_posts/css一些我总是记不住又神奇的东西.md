@@ -131,22 +131,8 @@ inset/outset：内部阴影/外部阴影(缺省默认)；
 eg: p~ul
 为所有相同的父元素中位于 p 元素之后的所有 ul 元素设置背景
 ## +
-# background一些属性
-## background-clip 背景的绘制区域（可用来画radio）
-```HTML
-.radio{
-    display:inline-block;
-    border-radius:50%;
-    border:1px solid green;
-    width:18px;
-    height:18px;
-    box-sizing:border-box;
-    padding:5px;
-    background:green;
-    background-clip:content-box;
-}
-<label class="radio"></label>
-```
-<label style="display:inline-block;border-radius:50%;border:1px solid green;width:18px;height:18px;box-sizing:border-box;padding:5px;background:green;background-clip:content-box"></label>
+选择相邻兄弟
+
+
 
 

@@ -197,7 +197,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -207,7 +207,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -287,7 +287,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-29T15:00:31+08:00">
                 2017-09-29
@@ -354,10 +354,7 @@
 <p><img src="/img/nth5.png" alt="" title=".box下第二个子元素的标签不是span所以匹配不上"><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.box span:nth-of-type(2)&#123;</div><div class="line">    border: 1px solid red;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"divItem"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divItem"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divItem"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"divItem"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p><img src="/img/nth6.png" alt="" title=".box下的第二个span元素"></p>
 <h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><h2 id=""><a href="#" class="headerlink" title="~"></a>~</h2><p>eg: p~ul<br>为所有相同的父元素中位于 p 元素之后的所有 ul 元素设置背景</p>
-<h2 id="-1"><a href="#-1" class="headerlink" title="+"></a>+</h2><h1 id="background一些属性"><a href="#background一些属性" class="headerlink" title="background一些属性"></a>background一些属性</h1><h2 id="background-clip-背景的绘制区域（可用来画radio）"><a href="#background-clip-背景的绘制区域（可用来画radio）" class="headerlink" title="background-clip 背景的绘制区域（可用来画radio）"></a>background-clip 背景的绘制区域（可用来画radio）</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.radio&#123;</div><div class="line">    display:inline-block;</div><div class="line">    border-radius:50%;</div><div class="line">    border:1px solid green;</div><div class="line">    width:18px;</div><div class="line">    height:18px;</div><div class="line">    box-sizing:border-box;</div><div class="line">    padding:5px;</div><div class="line">    background:green;</div><div class="line">    background-clip:content-box;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"radio"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure>
-<label style="display:inline-block;border-radius:50%;border:1px solid green;width:18px;height:18px;box-sizing:border-box;padding:5px;background:green;background-clip:content-box"></label>
-
-
+<h2 id="-1"><a href="#-1" class="headerlink" title="+"></a>+</h2><p>选择相邻兄弟</p>
 
           
         
@@ -438,7 +435,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-29T14:42:59+08:00">
                 2017-09-29
@@ -477,7 +474,66 @@
       
         
           
-            
+            <style>
+.checkbox{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid green;
+    text-align: center;
+    line-height: normal;
+}
+.checkbox:after{
+    content: "√";
+    font-size: 12px;
+    color: green;
+}
+.box div,.box span {
+    display: inline-block;
+    width: 200px;
+    height: 30px;
+    margin: 10px;
+    border: 1px solid #333;
+}
+.box span:nth-of-type(2) {
+    border: 1px solid red;
+}
+.radio-beauty-container {
+    font-size: 0;
+}
+.radio-name {
+    vertical-align: middle;
+    font-size: 16px;
+}
+.radio-beauty {
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    display: inline-block;
+    border: 1px solid green;
+    vertical-align: middle;
+    margin: 0 15px 0 3px;
+    border-radius: 50%;
+}
+.radio-beauty:hover {
+    box-shadow: 0 0 7px green;
+    padding: 2px;
+    background-color: green;
+    background-clip: content-box;
+}
+input[type="radio"]:checked+.radio-beauty {
+    padding: 2px;
+    background-color: green;
+    background-clip: content-box;
+}
+</style>
+
+<h2 id="background-clip-背景的绘制区域（可用来画radio）"><a href="#background-clip-背景的绘制区域（可用来画radio）" class="headerlink" title="background-clip 背景的绘制区域（可用来画radio）"></a>background-clip 背景的绘制区域（可用来画radio）</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.radio&#123;</div><div class="line">    display:inline-block;</div><div class="line">    border-radius:50%;</div><div class="line">    border:1px solid green;</div><div class="line">    width:18px;</div><div class="line">    height:18px;</div><div class="line">    box-sizing:border-box;</div><div class="line">    padding:5px;</div><div class="line">    background:green;</div><div class="line">    background-clip:content-box;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"radio"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><label style="display:inline-block;border-radius:50%;border:1px solid green;width:18px;height:18px;box-sizing:border-box;padding:5px;background:green;background-clip:content-box"></label></p>
+<h2 id="利用after写checkbox"><a href="#利用after写checkbox" class="headerlink" title="利用after写checkbox"></a>利用after写checkbox</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.checkbox&#123;</div><div class="line">    display: inline-block;</div><div class="line">    width: 12px;</div><div class="line">    height: 12px;</div><div class="line">    border: 1px solid green;</div><div class="line">    text-align: center;</div><div class="line">&#125;</div><div class="line">.checkbox:after&#123;</div><div class="line">    content: "√";</div><div class="line">    font-size: 12px;</div><div class="line">    color: green;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"checkbox"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><label class="checkbox"></label></p>
+<h2 id="利用-checked和-选中美化后的radio"><a href="#利用-checked和-选中美化后的radio" class="headerlink" title="利用:checked和+选中美化后的radio"></a>利用:checked和+选中美化后的radio</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">.box div,.box span &#123;</div><div class="line">    display: block;</div><div class="line">    width: 200px;</div><div class="line">    height: 30px;</div><div class="line">    margin: 10px;</div><div class="line">    border: 1px solid #333;</div><div class="line">&#125;</div><div class="line">.box span:nth-of-type(2) &#123;</div><div class="line">    border: 1px solid red;</div><div class="line">&#125;</div><div class="line">.radio-beauty-container &#123;</div><div class="line">    font-size: 0;</div><div class="line">&#125;</div><div class="line">.radio-name &#123;</div><div class="line">    vertical-align: middle;</div><div class="line">    font-size: 16px;</div><div class="line">&#125;</div><div class="line">.radio-beauty &#123;</div><div class="line">    width: 18px;</div><div class="line">    height: 18px;</div><div class="line">    box-sizing: border-box;</div><div class="line">    display: inline-block;</div><div class="line">    border: 1px solid green;</div><div class="line">    vertical-align: middle;</div><div class="line">    margin: 0 15px 0 3px;</div><div class="line">    border-radius: 50%;</div><div class="line">&#125;</div><div class="line">.radio-beauty:hover &#123;</div><div class="line">    box-shadow: 0 0 7px green;</div><div class="line">    padding: 2px;</div><div class="line">    background-color: green;</div><div class="line">    background-clip: content-box;</div><div class="line">&#125;</div><div class="line">input[type="radio"]:checked+.radio-beauty &#123;</div><div class="line">    padding: 2px;</div><div class="line">    background-color: green;</div><div class="line">    background-clip: content-box;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"radio-beauty-container"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"radio-name"</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"radioName"</span> <span class="attr">id</span>=<span class="string">"radioName1"</span> <span class="attr">hidden</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"radioName1"</span> <span class="attr">class</span>=<span class="string">"radio-beauty"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"radio-name"</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"radioName"</span> <span class="attr">id</span>=<span class="string">"radioName2"</span> <span class="attr">hidden</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"radioName2"</span> <span class="attr">class</span>=<span class="string">"radio-beauty"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"radio-name"</span>&gt;</span>Javascript<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"radioName"</span> <span class="attr">id</span>=<span class="string">"radioName3"</span> <span class="attr">hidden</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"radioName3"</span> <span class="attr">class</span>=<span class="string">"radio-beauty"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<div class="radio-beauty-container"><br>    <label><br>        <span class="radio-name">HTML</span><br>        <input type="radio" name="radioName" id="radioName1" hidden><br>        <label for="radioName1" class="radio-beauty"></label><br>    </label><br>    <label><br>        <span class="radio-name">CSS</span><br>        <input type="radio" name="radioName" id="radioName2" hidden><br>        <label for="radioName2" class="radio-beauty"></label><br>    </label><br>    <label><br>        <span class="radio-name">Javascript</span><br>        <input type="radio" name="radioName" id="radioName3" hidden><br>        <label for="radioName3" class="radio-beauty"></label><br>    </label><br></div>
           
         
       
@@ -557,7 +613,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-21T00:07:58+08:00">
                 2017-09-21
@@ -697,7 +753,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T16:19:36+08:00">
                 2017-09-13
@@ -983,7 +1039,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-08T15:46:42+08:00">
                 2017-09-08
@@ -1131,7 +1187,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-06T11:49:14+08:00">
                 2017-09-06
@@ -1256,7 +1312,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T19:37:00+08:00">
                 2017-08-27
@@ -1394,7 +1450,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-24T16:38:23+08:00">
                 2017-08-24
@@ -1518,7 +1574,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-21T16:29:16+08:00">
                 2017-08-21
@@ -1646,7 +1702,7 @@ git clean -df         删除未跟踪的文件
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-17T10:35:24+08:00">
                 2017-08-17
@@ -1792,7 +1848,7 @@ git clean -df         删除未跟踪的文件
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">13</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -1846,7 +1902,7 @@ git clean -df         删除未跟踪的文件
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

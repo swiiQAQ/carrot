@@ -102,7 +102,7 @@
 <meta property="og:image" content="https://swiiqaq.github.io/img/nth4.png">
 <meta property="og:image" content="https://swiiqaq.github.io/img/nth5.png">
 <meta property="og:image" content="https://swiiqaq.github.io/img/nth6.png">
-<meta property="og:updated_time" content="2017-10-10T09:44:54.088Z">
+<meta property="og:updated_time" content="2017-10-11T08:53:29.154Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css一些我总是记不住又神奇的东西">
 <meta name="twitter:description" content="text-shadow  text-shadow: x-shadow y-shadow blur color;  1&amp;lt;h1 style=&quot;color:white;text-shadow:2px 2px 4px #000000;&quot;&amp;gt;白色文本的阴影效果！&amp;lt;/h1&amp;gt; 白色文本的阴影效果！123&amp;lt;div style=&quot;background:#666;width:200px&quot;&amp;">
@@ -206,7 +206,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -216,7 +216,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -293,7 +293,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-29T15:00:31+08:00">
                 2017-09-29
@@ -358,10 +358,7 @@
 <p><img src="/img/nth5.png" alt="" title=".box下第二个子元素的标签不是span所以匹配不上"><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.box span:nth-of-type(2)&#123;</div><div class="line">    border: 1px solid red;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"divItem"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divItem"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divItem"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"divItem"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p><img src="/img/nth6.png" alt="" title=".box下的第二个span元素"></p>
 <h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><h2 id=""><a href="#" class="headerlink" title="~"></a>~</h2><p>eg: p~ul<br>为所有相同的父元素中位于 p 元素之后的所有 ul 元素设置背景</p>
-<h2 id="-1"><a href="#-1" class="headerlink" title="+"></a>+</h2><h1 id="background一些属性"><a href="#background一些属性" class="headerlink" title="background一些属性"></a>background一些属性</h1><h2 id="background-clip-背景的绘制区域（可用来画radio）"><a href="#background-clip-背景的绘制区域（可用来画radio）" class="headerlink" title="background-clip 背景的绘制区域（可用来画radio）"></a>background-clip 背景的绘制区域（可用来画radio）</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.radio&#123;</div><div class="line">    display:inline-block;</div><div class="line">    border-radius:50%;</div><div class="line">    border:1px solid green;</div><div class="line">    width:18px;</div><div class="line">    height:18px;</div><div class="line">    box-sizing:border-box;</div><div class="line">    padding:5px;</div><div class="line">    background:green;</div><div class="line">    background-clip:content-box;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"radio"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure>
-<label style="display:inline-block;border-radius:50%;border:1px solid green;width:18px;height:18px;box-sizing:border-box;padding:5px;background:green;background-clip:content-box"></label>
-
-
+<h2 id="-1"><a href="#-1" class="headerlink" title="+"></a>+</h2><p>选择相邻兄弟</p>
 
       
     </div>
@@ -455,10 +452,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -479,7 +476,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">13</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -517,7 +514,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#text-shadow"><span class="nav-number">1.</span> <span class="nav-text">text-shadow</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">白色文本的阴影效果！</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">VINTAGE RETRO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">World</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#box-shadow"><span class="nav-number">5.</span> <span class="nav-text">box-shadow</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nth-child-和nth-of-type-的区别"><span class="nav-number">6.</span> <span class="nav-text">nth-child()和nth-of-type()的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不规定子元素的类型的情况下"><span class="nav-number">6.0.1.</span> <span class="nav-text">不规定子元素的类型的情况下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#规定子元素的类型的情况下"><span class="nav-number">6.0.2.</span> <span class="nav-text">规定子元素的类型的情况下</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#规定类型为class的情况下"><span class="nav-number">6.0.2.1.</span> <span class="nav-text">规定类型为class的情况下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规定类型为标签名的情况下"><span class="nav-number">6.0.2.2.</span> <span class="nav-text">规定类型为标签名的情况下</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择器"><span class="nav-number">7.</span> <span class="nav-text">选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">7.1.</span> <span class="nav-text">~</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">7.2.</span> <span class="nav-text">+</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#background一些属性"><span class="nav-number">8.</span> <span class="nav-text">background一些属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#background-clip-背景的绘制区域（可用来画radio）"><span class="nav-number">8.1.</span> <span class="nav-text">background-clip 背景的绘制区域（可用来画radio）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#text-shadow"><span class="nav-number">1.</span> <span class="nav-text">text-shadow</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">白色文本的阴影效果！</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">VINTAGE RETRO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">World</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#box-shadow"><span class="nav-number">5.</span> <span class="nav-text">box-shadow</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nth-child-和nth-of-type-的区别"><span class="nav-number">6.</span> <span class="nav-text">nth-child()和nth-of-type()的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不规定子元素的类型的情况下"><span class="nav-number">6.0.1.</span> <span class="nav-text">不规定子元素的类型的情况下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#规定子元素的类型的情况下"><span class="nav-number">6.0.2.</span> <span class="nav-text">规定子元素的类型的情况下</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#规定类型为class的情况下"><span class="nav-number">6.0.2.1.</span> <span class="nav-text">规定类型为class的情况下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规定类型为标签名的情况下"><span class="nav-number">6.0.2.2.</span> <span class="nav-text">规定类型为标签名的情况下</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择器"><span class="nav-number">7.</span> <span class="nav-text">选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">7.1.</span> <span class="nav-text">~</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">7.2.</span> <span class="nav-text">+</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -549,7 +546,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
