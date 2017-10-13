@@ -149,19 +149,16 @@ input[type="radio"]:checked+.radio-beauty {
 </div>
 ```
 <div class="radio-beauty-container">
-    <label>
-        <span class="radio-name">HTML</span>
-        <input type="radio" name="radioName" id="radioName1" hidden/>
-        <label for="radioName1" class="radio-beauty"></label>
-    </label>
-    <label>
-        <span class="radio-name">CSS</span>
-        <input type="radio" name="radioName" id="radioName2" hidden/>
-        <label for="radioName2" class="radio-beauty"></label>
-    </label>
-    <label>
-        <span class="radio-name">Javascript</span>
-        <input type="radio" name="radioName" id="radioName3" hidden/>
-        <label for="radioName3" class="radio-beauty"></label>
+    <label><span class="radio-name">HTML</span><input type="radio" name="radioName" id="radioName1" hidden/><label for="radioName1" class="radio-beauty"></label></label><label><span class="radio-name">CSS</span><input type="radio" name="radioName" id="radioName2" hidden/><label for="radioName2" class="radio-beauty"></label></label><label><span class="radio-name">Javascript</span><input type="radio" name="radioName" id="radioName3" hidden/><label for="radioName3" class="radio-beauty"></label>
     </label>
 </div>
+
+## 通过content获取attr属性
+```HTML
+.hw:hover::after{
+    content: attr(data-msg);
+}
+<div class="hw" data-msg="hello world"></div>
+```
+
+<!-- ## 通过:not()指定某个m -->
