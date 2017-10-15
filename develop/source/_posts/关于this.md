@@ -12,7 +12,23 @@ call()
 func.call(thisArg,arg1,arg2,...)
 apply()
 func.apply(thisArg,[arg1,arg2])
->new 
+
+```HTML
+var Person = function(){
+}
+Person.prototype={
+    words: 'hello',
+    say: function(){
+        console.log(this.words);
+    }
+}
+var teacher = new Person();
+teacher.say();
+var coders = {
+	words: 'hello world',
+}
+teacher.say.call(coders)
+```
 ## this
 > this的指向，是在函数被调用时确定的
 >在非严格模式下，若this指向null或者undefined，则会自动指向全局对象（window对象）
