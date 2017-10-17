@@ -250,6 +250,128 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/10/17/关于js中的new/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="swii">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小萝卜头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/17/关于js中的new/" itemprop="url">
+                  关于js中的new
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-17T14:00:53+08:00">
+                2017-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>刚开始我看到可以new一个函数的时候，我震惊了，对于我来说new是实例化类，js这种没有类的语言怎么可以new？？？<br>后来我发现一些很神奇的东西，甚至牵扯到了我一直没懂的原型链，下面就通过new来看看这些乱七八糟的东西吧<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Bar()&#123;</div><div class="line">    var a = 0;</div><div class="line">&#125;</div><div class="line">Bar.prototype=&#123;</div><div class="line">    init:function()&#123;</div><div class="line">        console.log('init');</div><div class="line">    &#125;,</div><div class="line">    color: 'blue'</div><div class="line">&#125;</div><div class="line">var bar = new Bar();</div></pre></td></tr></table></figure></p>
+<p>当时我就是看到类似这种东西的时候觉得什么情况？？？<br>然后网上说，new在js中的作用是什么呢？<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Bar()&#123;</div><div class="line">    var a = 0;</div><div class="line">&#125;</div><div class="line">function newFunc()&#123;</div><div class="line">    var temp = &#123;&#125;;</div><div class="line">    temp.__proto__ = Bar.prototype;</div><div class="line">    Bar.call(temp);</div><div class="line">    return temp;</div><div class="line">&#125;</div><div class="line">var bar = newFunc();</div></pre></td></tr></table></figure></p>
+<p>这段代码的效果跟上面使用new是一样的，因为new的作用主要就是将实例出来的对象的<strong>proto</strong>指向原型Bar的prototype。这样子，每次实例化出的对象，都会具有Bar.prototype里面的方法和属性。并且只要改变Bar.prototype内的内容，所有实例的出的对象的属性也会发生变化</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/10/13/关于this/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -326,7 +448,15 @@
       
         
           
-            <p>上次提到的关于执行上下文中，执行上下文包括变量对象、作用域链和this<br>现在就研究研究this吧<br>在讲this之前先看看call和apply哈哈哈哈哈哈</p>
+            <p>上次提到的关于执行上下文中，执行上下文包括变量对象、作用域链和this<br>现在就研究研究this吧</p>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><blockquote>
+<p>this的指向，是在函数被调用时确定的<br>如果调用的函数是在某个对象中的，则函数中的this指向该对象<br>如果函数是独立存在的，函数中的this指向的是undefined（严格模式下）<br>在非严格模式下，若this指向null或者undefined，则会自动指向全局对象（window对象）</p>
+</blockquote>
+<p><img src="/img/this1.png" alt="" title="在严格模式下，this不存在"><br><img src="/img/this2.png" alt="" title="非严格模式下，this指向了window"><br><img src="/img/this3.png" alt="" title="函数独立调用，this是undefined，函数在对象中被调用，this指向对象（在这里是window）"> </p>
+<p><img src="/img/this4.png" alt=""></p>
+<p>foo()单独调用在严格模式下应该是获取不到this，在这里非严格模式下，取到的是window.a为20<br>window.foo()在window对象中调用，this指向window，this.a即20<br>boo利用call将this指向了boo对象，所以this.a为boo.a即8</p>
+<p><img src="/img/this5.png" alt=""></p>
+<p>fn和c里面的this是不一样的，因为fn里面的this是包含在fn函数中，fn函数是属于obj对象中的，所以在fn中的this指向的是obj，而C在{}中并没有形成新的作用域，所以c中的this指向的还是foo，但是因为foo函数是单独调用的，所以不存在this</p>
 <h2 id="call-和apply"><a href="#call-和apply" class="headerlink" title="call()和apply()"></a>call()和apply()</h2><blockquote>
 <p>call()和apply()都是为了改变某个函数内的this的指向，call与apply的方法相似，区别只是call()方法接受的时若干参数的列表，而apply()接受的是一个包含多个参数的数组</p>
 </blockquote>
@@ -334,10 +464,6 @@
 <p>1、利用call，apply实现继承，将this的上下文变成在teacher中的上下文，复用了方法。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var Person = function()&#123;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">    words: 'hello',</div><div class="line">    say: function()&#123;</div><div class="line">        console.log(this.words);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var teacher = new Person();</div><div class="line">teacher.say();</div><div class="line">var coders = &#123;</div><div class="line">	words: 'hello world',</div><div class="line">&#125;</div><div class="line">teacher.say.call(coders)</div><div class="line">//等同于Person.prototype.say.call(coders)</div></pre></td></tr></table></figure></p>
 <p>2、利用call做继承<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var school = function()&#123;</div><div class="line">    this.degree = 'graduate degree';</div><div class="line">    this.schoolName = 'jxnu'</div><div class="line">&#125;</div><div class="line">var teacher = &#123;</div><div class="line">    name : 'teacher'</div><div class="line">&#125;</div><div class="line"></div><div class="line">school.call(teacher);   </div><div class="line">//teacher: &#123;name:'teacher',degree:'graduate degree',schoolName:'jxnu'&#125;</div></pre></td></tr></table></figure></p>
 <p>3、call和apply的用法区别以及如何使用参数<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function add(a,b)&#123;</div><div class="line">  return a+b;  </div><div class="line">&#125;</div><div class="line">function sub(a,b)&#123;</div><div class="line">  return a-b;  </div><div class="line">&#125;</div><div class="line">var a1 = add.apply(sub,[4,2]);　　//sub调用add的方法</div><div class="line">// var a1 = add.call(sub,4,2);   //等同于用apply</div><div class="line">var a2 = sub.apply(add,[4,2]);</div><div class="line">// var a2 = sub.apply(add,4,2);</div><div class="line">alert(a1);  //6     </div><div class="line">alert(a2);  //2</div></pre></td></tr></table></figure></p>
-<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><blockquote>
-<p>this的指向，是在函数被调用时确定的<br>如果调用的函数是在某个对象中的，则函数中的this指向该对象<br>如果函数是独立存在的，函数中的this指向的是undefined（严格模式下）<br>在非严格模式下，若this指向null或者undefined，则会自动指向全局对象（window对象）</p>
-</blockquote>
-<p>1、this是动态的，这一点已经在上面call和apply的方法中可以看出来<br>2、<br><img src="/img/this1.png" alt="" title="在严格模式下，this不存在"><br><img src="/img/this2.png" alt="" title="非严格模式下，this指向了window"><br><img src="/img/this3.png" alt="" title="this动态改变，在windows下被调用则成为全局变量"> </p>
 
           
         
@@ -1662,134 +1788,6 @@ git clean -df         删除未跟踪的文件
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/08/21/换设备后如何继续写博客/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="swii">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小萝卜头">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/21/换设备后如何继续写博客/" itemprop="url">
-                  换设备后如何继续写博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-21T16:29:16+08:00">
-                2017-08-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>程老师让我回去写博客，结果发现在家写不了，然后昨天晚上吸了一晚上的熊猫：）</p>
-<ol>
-<li>ssh-keygen -t rsa -C “youremail@example.com” 生成公钥私钥</li>
-<li>github 添加ssh，将公钥添加进去</li>
-<li>npm install hexo-cli -g 安装hexo</li>
-<li>拷贝theme/，source/，scaffolds/文件夹<br>package.json，.npmignore，_config.yml 文件</li>
-<li>npm install 安装模块</li>
-<li>ok</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1839,7 +1837,7 @@ git clean -df         删除未跟踪的文件
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
