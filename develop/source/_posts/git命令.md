@@ -3,6 +3,12 @@ title: git命令
 date: 2017-08-27 19:37:00
 tags:
 ---
+## 新建分支
+git init 
+git add *
+git commit -m 'init'
+git remote add origin https://github.com/xxxxxx.git
+git push -u origin master
 ## 分支
 ![](/img/git1.png)
 Git branch 查看当前分支
@@ -82,3 +88,28 @@ Git revert <sha>
 ## 合并分支
 ### rebase和merge的区别
 
+## tag
+### 查看tag
+#### 查看所有tag
+>git tag
+
+按字母排序列出tag
+#### 查看限定tag
+>git tag -l 1.*
+列出tag为1.0或者1.1等等版本
+### 打tag
+>git tag 1.0
+
+### 给过去提交的代码打tag
+>git log --oneline
+git tag -a 0.1 
+
+![](/img/git12.png '需要输入commit message否则不能打tag')
+### 删除tag
+>git tag -d 1.0
+
+不用切换至tag那一条提交记录，直接删除即可
+### push tag
+>git push origin --tags
+
+将tag上传到服务器
