@@ -101,7 +101,7 @@
 <meta property="og:image" content="https://swiiqaq.github.io/img/this3.png">
 <meta property="og:image" content="https://swiiqaq.github.io/img/this4.png">
 <meta property="og:image" content="https://swiiqaq.github.io/img/this5.png">
-<meta property="og:updated_time" content="2017-10-17T05:58:29.564Z">
+<meta property="og:updated_time" content="2017-11-24T08:20:59.118Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于this">
 <meta name="twitter:description" content="上次提到的关于执行上下文中，执行上下文包括变量对象、作用域链和this现在就研究研究this吧 this this的指向，是在函数被调用时确定的如果调用的函数是在某个对象中的，则函数中的this指向该对象如果函数是独立存在的，函数中的this指向的是undefined（严格模式下）在非严格模式下，若this指向null或者undefined，则会自动指向全局对象（window对象）     foo">
@@ -205,7 +205,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -215,7 +215,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -292,7 +292,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-13T14:05:47+08:00">
                 2017-10-13
@@ -338,13 +338,17 @@
 <p>foo()单独调用在严格模式下应该是获取不到this，在这里非严格模式下，取到的是window.a为20<br>window.foo()在window对象中调用，this指向window，this.a即20<br>boo利用call将this指向了boo对象，所以this.a为boo.a即8</p>
 <p><img src="/img/this5.png" alt=""></p>
 <p>fn和c里面的this是不一样的，因为fn里面的this是包含在fn函数中，fn函数是属于obj对象中的，所以在fn中的this指向的是obj，而C在{}中并没有形成新的作用域，所以c中的this指向的还是foo，但是因为foo函数是单独调用的，所以不存在this</p>
-<h2 id="call-和apply"><a href="#call-和apply" class="headerlink" title="call()和apply()"></a>call()和apply()</h2><blockquote>
-<p>call()和apply()都是为了改变某个函数内的this的指向，call与apply的方法相似，区别只是call()方法接受的时若干参数的列表，而apply()接受的是一个包含多个参数的数组</p>
+<h2 id="call-和apply-和bind"><a href="#call-和apply-和bind" class="headerlink" title="call()和apply()和bind()"></a>call()和apply()和bind()</h2><blockquote>
+<p>call()和apply()都是为了改变某个函数内的this的指向，call与apply的方法相似，区别只是call()方法接受的时若干参数的列表，而apply()接受的是一个包含多个参数的数组。而bind()也是为了改变this的指向，但是返回的值是函数</p>
 </blockquote>
-<p>call()<br>func.call(thisArg,arg1,arg2,…)<br>apply()<br>func.apply(thisArg,[arg1,arg2])</p>
-<p>1、利用call，apply实现继承，将this的上下文变成在teacher中的上下文，复用了方法。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var Person = function()&#123;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">    words: 'hello',</div><div class="line">    say: function()&#123;</div><div class="line">        console.log(this.words);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var teacher = new Person();</div><div class="line">teacher.say();</div><div class="line">var coders = &#123;</div><div class="line">	words: 'hello world',</div><div class="line">&#125;</div><div class="line">teacher.say.call(coders)</div><div class="line">//等同于Person.prototype.say.call(coders)</div></pre></td></tr></table></figure></p>
-<p>2、利用call做继承<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var school = function()&#123;</div><div class="line">    this.degree = 'graduate degree';</div><div class="line">    this.schoolName = 'jxnu'</div><div class="line">&#125;</div><div class="line">var teacher = &#123;</div><div class="line">    name : 'teacher'</div><div class="line">&#125;</div><div class="line"></div><div class="line">school.call(teacher);   </div><div class="line">//teacher: &#123;name:'teacher',degree:'graduate degree',schoolName:'jxnu'&#125;</div></pre></td></tr></table></figure></p>
-<p>3、call和apply的用法区别以及如何使用参数<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function add(a,b)&#123;</div><div class="line">  return a+b;  </div><div class="line">&#125;</div><div class="line">function sub(a,b)&#123;</div><div class="line">  return a-b;  </div><div class="line">&#125;</div><div class="line">var a1 = add.apply(sub,[4,2]);　　//sub调用add的方法</div><div class="line">// var a1 = add.call(sub,4,2);   //等同于用apply</div><div class="line">var a2 = sub.apply(add,[4,2]);</div><div class="line">// var a2 = sub.apply(add,4,2);</div><div class="line">alert(a1);  //6     </div><div class="line">alert(a2);  //2</div></pre></td></tr></table></figure></p>
+<p>call()<br>func.call(thisArg,arg1,arg2,…)<br>apply()<br>func.apply(thisArg,[arg1,arg2])<br>bind()<br>func.bind(thisArg,arg1,arg2,…)</p>
+<h3 id="1、利用call，apply实现继承，将this的上下文变成在teacher中的上下文，复用了方法。"><a href="#1、利用call，apply实现继承，将this的上下文变成在teacher中的上下文，复用了方法。" class="headerlink" title="1、利用call，apply实现继承，将this的上下文变成在teacher中的上下文，复用了方法。"></a>1、利用call，apply实现继承，将this的上下文变成在teacher中的上下文，复用了方法。</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var Person = function()&#123;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">    words: 'hello',</div><div class="line">    say: function()&#123;</div><div class="line">        console.log(this.words);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var teacher = new Person();</div><div class="line">teacher.say();</div><div class="line">var coders = &#123;</div><div class="line">	words: 'hello world',</div><div class="line">&#125;</div><div class="line">teacher.say.call(coders)</div><div class="line">//等同于Person.prototype.say.call(coders)</div></pre></td></tr></table></figure>
+<h3 id="2、利用call做继承"><a href="#2、利用call做继承" class="headerlink" title="2、利用call做继承"></a>2、利用call做继承</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var school = function()&#123;</div><div class="line">    this.degree = 'graduate degree';</div><div class="line">    this.schoolName = 'jxnu'</div><div class="line">&#125;</div><div class="line">var teacher = &#123;</div><div class="line">    name : 'teacher'</div><div class="line">&#125;</div><div class="line"></div><div class="line">school.call(teacher);   </div><div class="line">//teacher: &#123;name:'teacher',degree:'graduate degree',schoolName:'jxnu'&#125;</div></pre></td></tr></table></figure>
+<h3 id="3、call、apply和bind的用法区别以及如何使用参数"><a href="#3、call、apply和bind的用法区别以及如何使用参数" class="headerlink" title="3、call、apply和bind的用法区别以及如何使用参数"></a>3、call、apply和bind的用法区别以及如何使用参数</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function add(a,b)&#123;</div><div class="line">  return a+b;  </div><div class="line">&#125;</div><div class="line">function sub(a,b)&#123;</div><div class="line">  return a-b;  </div><div class="line">&#125;</div><div class="line">var a1 = add.apply(sub,[4,2]);　　//sub调用add的方法</div><div class="line">// var a1 = add.call(sub,4,2);   //等同于用apply</div><div class="line">var a2 = sub.apply(add,[4,2]);</div><div class="line">// var a2 = sub.apply(add,4,2);</div><div class="line">var a3 = sub.bind(add,4,2)();   //等同于call方法，因为返回的是函数，需要在后面加个()执行函数。</div><div class="line">//var a3 = sub.call(add,4,2);</div><div class="line">alert(a1);  //6     </div><div class="line">alert(a2);  //2</div></pre></td></tr></table></figure>
+<h3 id="4、较为特殊的应用"><a href="#4、较为特殊的应用" class="headerlink" title="4、较为特殊的应用"></a>4、较为特殊的应用</h3><h4 id="1）求数组中的最大和最小值"><a href="#1）求数组中的最大和最小值" class="headerlink" title="1）求数组中的最大和最小值"></a>1）求数组中的最大和最小值</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var arr = [2,10,-3,6,-20];</div><div class="line">Math.max.apply(Math,arr);</div><div class="line">//Math.max.call(Math,2,10,-3,6,-20);</div><div class="line">//Math.max.bind(Math,2,10,-3,6,-20)();</div></pre></td></tr></table></figure>
+<h4 id="2-将伪数组变成数组"><a href="#2-将伪数组变成数组" class="headerlink" title="2)将伪数组变成数组"></a>2)将伪数组变成数组</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var list = &#123;</div><div class="line">    0: 'apple',</div><div class="line">    1: 'pear',</div><div class="line">    2: 'strawberry',</div><div class="line">    length: 3</div><div class="line">&#125;</div><div class="line">var arr = Array.prototype.slice.call(arrayLike);</div><div class="line">//</div></pre></td></tr></table></figure>
+<p>伪数组必须有个属性为length，因为要模仿数组的数据结构，<br>转成数组后可以实现数组的方法，比如pop push等</p>
+<h4 id="3）判断变量类型"><a href="#3）判断变量类型" class="headerlink" title="3）判断变量类型"></a>3）判断变量类型</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if(!Array.isArray)&#123;</div><div class="line">    Array.isArray = function(arg)&#123;</div><div class="line">        return Object.prototype.toString.call(arg) == '[object Array]'</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">isArray([])     //true</div><div class="line">//可用于polyfill</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -442,10 +446,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -466,7 +470,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">15</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -504,7 +508,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#this"><span class="nav-number">1.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call-和apply"><span class="nav-number">2.</span> <span class="nav-text">call()和apply()</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#this"><span class="nav-number">1.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call-和apply-和bind"><span class="nav-number">2.</span> <span class="nav-text">call()和apply()和bind()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、利用call，apply实现继承，将this的上下文变成在teacher中的上下文，复用了方法。"><span class="nav-number">2.1.</span> <span class="nav-text">1、利用call，apply实现继承，将this的上下文变成在teacher中的上下文，复用了方法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、利用call做继承"><span class="nav-number">2.2.</span> <span class="nav-text">2、利用call做继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、call、apply和bind的用法区别以及如何使用参数"><span class="nav-number">2.3.</span> <span class="nav-text">3、call、apply和bind的用法区别以及如何使用参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、较为特殊的应用"><span class="nav-number">2.4.</span> <span class="nav-text">4、较为特殊的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1）求数组中的最大和最小值"><span class="nav-number">2.4.1.</span> <span class="nav-text">1）求数组中的最大和最小值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-将伪数组变成数组"><span class="nav-number">2.4.2.</span> <span class="nav-text">2)将伪数组变成数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）判断变量类型"><span class="nav-number">2.4.3.</span> <span class="nav-text">3）判断变量类型</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -536,7 +540,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
