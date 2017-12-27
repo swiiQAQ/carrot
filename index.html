@@ -197,7 +197,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -207,7 +207,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -287,7 +287,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-26T17:55:34+08:00">
                 2017-12-26
@@ -369,6 +369,193 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/12/24/JAVASCRIPT高级程序设计（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="swii">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小萝卜头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/24/JAVASCRIPT高级程序设计（一）/" itemprop="url">
+                  JAVASCRIPT高级程序设计（一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-24T23:17:52+08:00">
+                2017-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="第二章-在HTML中使用JAVASCRIPT"><a href="#第二章-在HTML中使用JAVASCRIPT" class="headerlink" title="第二章 在HTML中使用JAVASCRIPT"></a>第二章 在HTML中使用JAVASCRIPT</h2><h3 id="2-1-lt-script-gt-元素"><a href="#2-1-lt-script-gt-元素" class="headerlink" title="2.1 &lt; script &gt;元素"></a>2.1 &lt; script &gt;元素</h3><p>async: 可选，表示立即下载脚本<br>defer: 可选，表示脚本可以延迟到文档完全被解析和显示之后再执行。</p>
+<blockquote>
+<p>但是延迟脚本并不一定会延迟顺序执行，也不一定会在DOMContentLoaded事件触发前执行，因此最好只包含一个延迟脚本。<br>defer属性只适用于外部脚本文件。<br>带有src属性的&lt; script &gt;元素不应该在其&lt; script &gt;和&lt; /script &gt;标签之间再包含额外的JavaScript代码</p>
+</blockquote>
+<h3 id="2-2-标签的位置"><a href="#2-2-标签的位置" class="headerlink" title="2.2 标签的位置"></a>2.2 标签的位置</h3><p>在&lt; head &gt;元素中包含所有JavaScript，意味着必须等到全部Javascript代码都被下载，解析和执行完成以后，才能开始呈现页面的内容（浏览器在遇到<body>标签时才开始呈现内容）</body></p>
+<h2 id="第三章-基本概念"><a href="#第三章-基本概念" class="headerlink" title="第三章 基本概念"></a>第三章 基本概念</h2><h3 id="3-1语法"><a href="#3-1语法" class="headerlink" title="3.1语法"></a>3.1语法</h3><h4 id="3-1-1-标识符"><a href="#3-1-1-标识符" class="headerlink" title="3.1.1 标识符"></a>3.1.1 标识符</h4><p>变量、函数、属性的名字，或者函数的参数。<br>第一个字符必须是一个字母、<em>、$，其他字符可以是字母、</em>、$或数字</p>
+<h4 id="3-1-2严格模式"><a href="#3-1-2严格模式" class="headerlink" title="3.1.2严格模式"></a>3.1.2严格模式</h4><p>严格模式是ES5引入的概念，在严格模式下，一些不确定的行为将得到处理，而且对某些不安全的操作也会抛出错误</p>
+<blockquote>
+<p>ES6默认严格模式</p>
+</blockquote>
+<h3 id="3-2-变量"><a href="#3-2-变量" class="headerlink" title="3.2 变量"></a>3.2 变量</h3><p>用var操作符定义的变量将成为定义该变量的作用域中的局部变量的作用域中的局部变量，即如果在函数中使用var定义一个变量，这个变量在函数退出后销毁。<br>但是如果在函数中没有使用var定义，会创建一个全局变量，在函数外部也可以访问到，但是并不建议这样。</p>
+<h3 id="3-4-数据类型"><a href="#3-4-数据类型" class="headerlink" title="3.4 数据类型"></a>3.4 数据类型</h3><p>五种基本数据类型<br>Undefined<br>Null<br>Boolean<br>Number<br>String<br>一种复杂类型<br>Object（本质上是由一组无序的名值对组成的，function也属于Object类型）</p>
+<h4 id="3-4-1-typeof操作符"><a href="#3-4-1-typeof操作符" class="headerlink" title="3.4.1 typeof操作符"></a>3.4.1 typeof操作符</h4><p>返回值为下列字符串: undefined boolean string number object function</p>
+<blockquote>
+<p>typeof null //object null被认为是一个空的对象引用<br>safari5及之前，chrome7及之前的版本中 typeof regExp为function，其他浏览器返回object</p>
+</blockquote>
+<h4 id="3-4-2-undefined类型"><a href="#3-4-2-undefined类型" class="headerlink" title="3.4.2 undefined类型"></a>3.4.2 undefined类型</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a;</div><div class="line">typeof a    //undefined 没定义的值为undefined</div><div class="line">typeof b    //undefined 虽然b连声明都没有声明，也是会返回undefined，但是如果直接使用b这个变量，会报错。</div></pre></td></tr></table></figure>
+<h4 id="3-4-3-null类型"><a href="#3-4-3-null类型" class="headerlink" title="3.4.3 null类型"></a>3.4.3 null类型</h4><blockquote>
+<p>null == undefined  //true</p>
+</blockquote>
+<h4 id="3-4-4-boolean类型"><a href="#3-4-4-boolean类型" class="headerlink" title="3.4.4 boolean类型"></a>3.4.4 boolean类型</h4><blockquote>
+<p>boolean类型的值是区分大小写的，True和False并不是boolean值<br>所有的值都可以转换成boolean值</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align:center">true</th>
+<th style="text-align:center">false</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td style="text-align:center">true</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td>String</td>
+<td style="text-align:center">非空字符串</td>
+<td style="text-align:center">“”</td>
+</tr>
+<tr>
+<td>Number</td>
+<td style="text-align:center">非零的数字</td>
+<td style="text-align:center">0和NAN</td>
+</tr>
+<tr>
+<td>Object</td>
+<td style="text-align:center">任何对象</td>
+<td style="text-align:center">null</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">undefined</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-4-5-Number类型"><a href="#3-4-5-Number类型" class="headerlink" title="3.4.5 Number类型"></a>3.4.5 Number类型</h4><p>1、浮点数值<br>对于极大极小的数值，用e表示，表示的数值为e前面的数值乘以10的指数次幂<br>浮点熟知的最高精度是17位小数</p>
+<blockquote>
+<p>0.1+0.2 == 0.3 //false 浮点数值计算产生的舍入误差问题</p>
+</blockquote>
+<p>2、数值范围<br>最小值被表示为Number.MIN_VALUE,即5e-324<br>最大值被表示为Number.MAX_VALUE,即1.7976931348623157e+308<br>如果超过最大值则为Infinity，小于最小值为-Infinity<br>想要确认是否为有穷数，可以用isFinite()函数判断，无穷数则为true</p>
+<p>3、NaN<br>NaN的意思为Not a Number,用于表示一个本来要返回数值的操作数未返回数值的情况（避免抛出错误，代码就可以继续执行）</p>
+<blockquote>
+<p>NaN和任何的操作返回的都是NaN<br>NaN不和任何值相等，包括NaN本身，判断是否为数字可以用isNan()函数<br>isNaN()会将接收的值转换为数值例如”10”纯数字的字符串或者是boolean值，不能转换为数值的返回true</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/10/17/关于js中的new/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -406,7 +593,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-17T14:00:53+08:00">
                 2017-10-17
@@ -532,7 +719,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-13T14:05:47+08:00">
                 2017-10-13
@@ -671,7 +858,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-29T15:00:31+08:00">
                 2017-09-29
@@ -819,7 +1006,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-29T14:42:59+08:00">
                 2017-09-29
@@ -1000,7 +1187,7 @@ input[type="radio"]:checked+.radio-beauty {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-21T00:07:58+08:00">
                 2017-09-21
@@ -1142,7 +1329,7 @@ input[type="radio"]:checked+.radio-beauty {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T16:19:36+08:00">
                 2017-09-13
@@ -1428,7 +1615,7 @@ input[type="radio"]:checked+.radio-beauty {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-08T15:46:42+08:00">
                 2017-09-08
@@ -1576,7 +1763,7 @@ input[type="radio"]:checked+.radio-beauty {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-06T11:49:14+08:00">
                 2017-09-06
@@ -1621,165 +1808,6 @@ input[type="radio"]:checked+.radio-beauty {
 <h3 id="3、lastIndexOf-searchValue-fromindex"><a href="#3、lastIndexOf-searchValue-fromindex" class="headerlink" title="3、lastIndexOf(searchValue,fromindex)"></a>3、lastIndexOf(searchValue,fromindex)</h3><p>searchValue为需要查找的字符串<br>Formindex 可填可不填，不填则从最后一个字符串开始检索，取值范围为0到length-1<br>“hello world”.lastIndexOf(“el”)    //1<br>“hello world”.lastIndexOf(“eh”)    //-1  -1则未查找到</p>
 <h3 id="4、indexOf-同上"><a href="#4、indexOf-同上" class="headerlink" title="4、indexOf() 同上"></a>4、indexOf() 同上</h3><h3 id="5、slice（start-end）"><a href="#5、slice（start-end）" class="headerlink" title="5、slice（start,end）"></a>5、slice（start,end）</h3><p>start 是开始的index，从0开始，如果为负数则是从尾巴倒数，例如-1则是最后一位<br>end则是结束的index 同上<br>截取的数组为[start,end)<br>如果end缺省的话，则从start开始一直到结尾<br>例如”hello”.slice(1,2)    //e</p>
 <h3 id="6、split-seperator-length"><a href="#6、split-seperator-length" class="headerlink" title="6、split(seperator,length)"></a>6、split(seperator,length)</h3><p>“h e l l o”.split(“ “)  //[h,e,l,l,o]<br>“hello”.split(“”)   //[h,e,l,l,o]</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://swiiqaq.github.io/2017/08/27/git命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="swii">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小萝卜头">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/27/git命令/" itemprop="url">
-                  git命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T19:37:00+08:00">
-                2017-08-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h2><p>git init<br>git add *<br>git commit -m ‘init’<br>git remote add origin <a href="https://github.com/xxxxxx.git" target="_blank" rel="external">https://github.com/xxxxxx.git</a><br>git push -u origin master</p>
-<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p><img src="/img/git1.png" alt=""><br>Git branch 查看当前分支<br>Git branch -a 查看远程分支和当前分支<br>Git branch test 建立新分支</p>
-<p><img src="/img/git2.png" alt=""><br>Git branch -d branchName 删除本地某分支<br>Git branch -r -d origin/branchName 删除远程分支<br>Git push origin: branchName 删除远程分支</p>
-<h2 id="查看分支之间的关系和commit日志"><a href="#查看分支之间的关系和commit日志" class="headerlink" title="查看分支之间的关系和commit日志"></a>查看分支之间的关系和commit日志</h2><p><img src="/img/git3.png" alt=""></p>
-<p>git log –graph –decorate –oneline –simplify-by-decoration –all</p>
-<p>说明：<br>–decorate 标记会让git log显示每个commit的引用(如:分支、tag等)<br>–oneline 一行显示<br>–simplify-by-decoration 只显示被branch或tag引用的commit<br>–all 表示显示所有的branch，这里也可以选择，比如我指向显示分支ABC的关系，则将–all替换为branchA branchB branchC</p>
-<h2 id="查看更改"><a href="#查看更改" class="headerlink" title="查看更改"></a>查看更改</h2><p><img src="/img/git4.png" alt=""><br>Git show <commitid> 查看某次更改的内容，不填写提交ID的话，显示最近一次更改的内容，id通过git log查询</commitid></p>
-<h2 id="撤销更改"><a href="#撤销更改" class="headerlink" title="撤销更改"></a>撤销更改</h2><pre><code> 撤销本地修改
-跟踪的文件撤销修改
- git checkout .
-未跟踪的文件撤销修改
-git clean -n        查看将要清除的文件
-git clean -df         删除未跟踪的文件
-</code></pre><h3 id="撤销暂存-暂存的文件取消暂存变成已修改未暂存"><a href="#撤销暂存-暂存的文件取消暂存变成已修改未暂存" class="headerlink" title="撤销暂存,暂存的文件取消暂存变成已修改未暂存"></a>撤销暂存,暂存的文件取消暂存变成已修改未暂存</h3><p>Git reset HEAD b.txt<br><img src="/img/git5.png" alt=""></p>
-<h3 id="更改commit提交信息"><a href="#更改commit提交信息" class="headerlink" title="更改commit提交信息"></a>更改commit提交信息</h3><p>Git commit –amend进入编辑器更改提交信息<br>或者<br>Git commit –amend -m <newtips><br><img src="/img/git6.png" alt=""><br>将提交信息由change b 更改为change b.txt,<br>将提交信息由change b.txt更改为rechange b.txt</newtips></p>
-<h3 id="撤销提交-commit-文件"><a href="#撤销提交-commit-文件" class="headerlink" title="撤销提交(commit)文件"></a>撤销提交(commit)文件</h3><p>Git reset –hard <sha><br><img src="/img/git7.png" alt=""><br>Rechange b.txt的更改全部丢弃，本地也没有修改的文件</sha></p>
-<p>Git reset <sha><br><img src="/img/git8.png" alt=""><br>reset后修改的文件仍然保留在本地磁盘</sha></p>
-<h3 id="在撤销commit后再恢复"><a href="#在撤销commit后再恢复" class="headerlink" title="在撤销commit后再恢复"></a>在撤销commit后再恢复</h3><p>reset后又还是想commit刚刚撤销的文件<br>Git reflog<br>Git cherry-pick <sha><br>查看HEAD改变的历史记录，它涉及的只是 HEAD 的改变。在你切换分支、用 git commit 进行提交、以及用 git reset 撤销 commit 时，HEAD 会改变，但当你用  git checkout – <bad filename=""> 撤销时，HEAD 并不会改变 — 如前所述，这些修改从来没有被提交过，因此 reflog 也无法帮助我们恢复它们。<br><img src="/img/git9.png" alt=""></bad></sha></p>
-<h3 id="撤销merge"><a href="#撤销merge" class="headerlink" title="撤销merge"></a>撤销merge</h3><p>道理同撤销commit一样<br>Git reset –hard <sha><br>如果merge出现冲突的话<br>Git merge –abort</sha></p>
-<h3 id="撤销已经push的内容"><a href="#撤销已经push的内容" class="headerlink" title="撤销已经push的内容"></a>撤销已经push的内容</h3><p>Git revert HEAD       撤销前一次push<br>Git revert HEAD^       撤销前前一次push<br>Git revert <sha><br>但是并不是之前提交的东西在分支上没有，还是会有记录的，另外假如后悔revert后，可以再revert一遍…<br><img src="/img/git10.png" alt=""></sha></p>
-<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><h3 id="rebase和merge的区别"><a href="#rebase和merge的区别" class="headerlink" title="rebase和merge的区别"></a>rebase和merge的区别</h3><h2 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h2><h3 id="查看tag"><a href="#查看tag" class="headerlink" title="查看tag"></a>查看tag</h3><h4 id="查看所有tag"><a href="#查看所有tag" class="headerlink" title="查看所有tag"></a>查看所有tag</h4><blockquote>
-<p>git tag</p>
-</blockquote>
-<p>按字母排序列出tag</p>
-<h4 id="查看限定tag"><a href="#查看限定tag" class="headerlink" title="查看限定tag"></a>查看限定tag</h4><blockquote>
-<p>git tag -l 1.*<br>列出tag为1.0或者1.1等等版本</p>
-<h3 id="打tag"><a href="#打tag" class="headerlink" title="打tag"></a>打tag</h3><p>git tag 1.0</p>
-</blockquote>
-<h3 id="给过去提交的代码打tag"><a href="#给过去提交的代码打tag" class="headerlink" title="给过去提交的代码打tag"></a>给过去提交的代码打tag</h3><blockquote>
-<p>git log –oneline<br>git tag -a 0.1 </p>
-</blockquote>
-<p><img src="/img/git12.png" alt="" title="需要输入commit message否则不能打tag"></p>
-<h3 id="删除tag"><a href="#删除tag" class="headerlink" title="删除tag"></a>删除tag</h3><blockquote>
-<p>git tag -d 1.0</p>
-</blockquote>
-<p>不用切换至tag那一条提交记录，直接删除即可</p>
-<h3 id="push-tag"><a href="#push-tag" class="headerlink" title="push tag"></a>push tag</h3><blockquote>
-<p>git push origin –tags</p>
-</blockquote>
-<p>将tag上传到服务器</p>
 
           
         
@@ -1863,8 +1891,8 @@ git clean -df         删除未跟踪的文件
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -1918,7 +1946,7 @@ git clean -df         删除未跟踪的文件
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
