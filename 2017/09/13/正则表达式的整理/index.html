@@ -96,7 +96,7 @@
 <meta property="og:url" content="https://swiiqaq.github.io/2017/09/13/正则表达式的整理/index.html">
 <meta property="og:site_name" content="小萝卜头">
 <meta property="og:description" content="正则是匹配模式，要么匹配字符，要么匹配位置。匹配字符元字符表   元字符 释义     ^ 开头   $ 结尾   \d 匹配数字   \w 匹配数字或者字母   \s 匹配空格   {5} 匹配6位数字   [0-9] 匹配0-9之间的数字   [A-z] 从大写A匹配至小写z   .* .*表示任意字符任意长度(.是任意字符*是任意长度）       反元字符 释义     \D 匹配非数字">
-<meta property="og:updated_time" content="2017-09-17T17:38:07.338Z">
+<meta property="og:updated_time" content="2018-04-08T09:15:15.461Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式的整理">
 <meta name="twitter:description" content="正则是匹配模式，要么匹配字符，要么匹配位置。匹配字符元字符表   元字符 释义     ^ 开头   $ 结尾   \d 匹配数字   \w 匹配数字或者字母   \s 匹配空格   {5} 匹配6位数字   [0-9] 匹配0-9之间的数字   [A-z] 从大写A匹配至小写z   .* .*表示任意字符任意长度(.是任意字符*是任意长度）       反元字符 释义     \D 匹配非数字">
@@ -199,7 +199,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -209,7 +209,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -286,7 +286,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T16:19:36+08:00">
                 2017-09-13
@@ -489,7 +489,7 @@
 </table>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var result = "hello".replace(/(?=l)/g, '#');</div><div class="line">console.log(result); </div><div class="line">// =&gt; "he#l#lo"</div><div class="line"></div><div class="line">var result = "hello".replace(/(?!l)/g, '#');</div><div class="line">console.log(result); </div><div class="line">// =&gt; "#h#ell#o#"</div></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var myReg = /(w+)s(w+)/; </div><div class="line">var str = "John Smith"; </div><div class="line">var newstr = str.replace(myReg, "$2, $1"); </div><div class="line">document.write(newstr);</div></pre></td></tr></table></figure>
-<h3 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式"></a>常用正则表达式</h3><p>去除所有空格<br>“  ajsdh asda adf “.replace(/\s/g,””);<br>验证邮箱<br>(/.<em>@.</em>..*/).test(“abc@hotmail.com”)<br>验证手机号码<br>/^1[34578]\d{9}$/.test(“17612341234”)<br>验证时间<br>(/^[01][0-9]|[2][0-3]:[0-5][0-9]$/).test(“23:59”)<br>验证颜色<br>“#fef1a2”.match(/#[0-9a-fA-F]{3,6}/g)<br>验证日期<br>(/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|[3][0])$/).test(“2017-02-22”)<br>按照1000金额划分<br>“123456789”.replace(/(?!^)(?=(\d{3})+$)/g,”,”)     //123，456，789</p>
+<h3 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式"></a>常用正则表达式</h3><p>去除所有空格<br>“  ajsdh asda adf “.replace(/\s/g,””);<br>验证邮箱<br>(/.<em>@.</em>..<em>/).test(“abc@hotmail.com”)<br>验证手机号码<br>/^1[34578]\d{9}$/.test(“17612341234”)<br>验证时间<br>(/^[01][0-9]|[2][0-3]:[0-5][0-9]$/).test(“23:59”)<br>验证颜色<br>“#fef1a2”.match(/#[0-9a-fA-F]{3,6}/g)<br>验证日期<br>(/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|[3][0])$/).test(“2017-02-22”)<br>按照1000金额划分<br>“123456789”.replace(/(?!^)(?=(\d{3})+$)/g,”,”)     //123，456，789<br>取某两个字符串中间的字符串<br>“a123b234c345”.match(/a(\S</em>)b/)[1]      //该数组第一个值为包含两边查找字符串，第二个值只取中间字符串</p>
 
       
     </div>
@@ -587,10 +587,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -611,7 +611,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">17</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -672,7 +672,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -681,7 +681,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
